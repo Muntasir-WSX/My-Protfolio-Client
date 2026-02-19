@@ -92,9 +92,9 @@ const Banner = () => {
                                 variants={itemVariants}
                                 className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.85] uppercase tracking-tighter"
                             >
-                                Build <br />
-                                <span className="text-transparent stroke-text">Digital</span> <br />
-                                Futures
+                                Building <br />
+                                <span className="text-transparent stroke-text">Scalable</span> <br />
+                                Solutions
                             </motion.h1>
                         </div>
                         
@@ -103,7 +103,7 @@ const Banner = () => {
                             className="text-gray-300 max-w-lg mx-auto lg:mx-0 text-lg md:text-xl leading-relaxed font-light"
                         >
                             Transforming your ideas into cutting-edge web solutions. 
-                            We craft high-performance websites and applications.
+                            I craft high-performance websites and applications.
                         </motion.p>
 
                         <motion.div 
@@ -111,11 +111,11 @@ const Banner = () => {
                             className="flex flex-wrap justify-center lg:justify-start gap-5 pt-2"
                         >
                             <button className="group btn bg-orange-600 hover:bg-orange-700 border-none text-white px-8 h-14 rounded-full font-bold flex items-center gap-2 transition-all duration-300">
-                                Get a Quote
+                               Download Resume
                                 <FiArrowUpRight className="text-xl group-hover:rotate-45 transition-transform" />
                             </button>
                             <button className="btn btn-outline border-gray-700 text-white hover:bg-white hover:text-black h-14 rounded-full px-8 transition-all duration-300">
-                                Portfolio
+                                Get In Touch
                             </button>
                         </motion.div>
 
