@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full object-top transition-all duration-[3000ms] ease-linear transform group-hover:translate-y-[-70%]"
+          className="w-full object-top transition-all duration-3000 ease-linear transform group-hover:translate-y-[-70%]"
           style={{ objectFit: 'cover' }}
         />
         {/* Overlay on Hover */}
@@ -40,7 +40,7 @@ const ProjectCard = ({ project }) => {
         <div className="grid grid-cols-2 gap-3">
           <a 
             href={project.liveLink} 
-            className="text-center py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-bold text-sm hover:scale-105 transition-transform"
+            className="text-center py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg font-bold text-sm hover:scale-105 transition-transform"
           >
             Live Demo
           </a>

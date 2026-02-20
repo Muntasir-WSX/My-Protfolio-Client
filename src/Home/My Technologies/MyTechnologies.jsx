@@ -70,7 +70,7 @@ const MyTechnologies = () => {
                     <h2 className="text-4xl md:text-5xl font-bold text-white">
                         My <span className="text-orange-600">Tech Stack</span>
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto mt-4"></div>
+                    <div className="w-24 h-1 bg-linear-to-r from-transparent via-orange-500 to-transparent mx-auto mt-4"></div>
                 </motion.div>
 
                 <motion.div 
@@ -96,7 +96,7 @@ const MyTechnologies = () => {
                                 <span className="text-gray-400 text-xs font-bold uppercase tracking-widest group-hover:text-white transition-colors relative z-10">
                                     {tech.name}
                                 </span>
-                                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/0 to-orange-600/5 group-hover:to-orange-600/10 transition-colors duration-500"></div>
+                                <div className="absolute inset-0 bg-linear-to-br from-orange-600/0 to-orange-600/5 group-hover:to-orange-600/10 transition-colors duration-500"></div>
                             </motion.div>
                         ))}
                     </AnimatePresence>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const AboutMe = () => {
-    // Banner-এর মতো একই Variants
+    
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
