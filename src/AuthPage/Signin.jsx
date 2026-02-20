@@ -1,21 +1,20 @@
-import React, { useContext } from 'react'; // useContext ইম্পোর্ট কর
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { HiArrowLeft } from 'react-icons/hi'; 
 import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router'; 
 import Logo from '../SharedComponents/Logo/Logo';
-import { AuthContext } from '../providers/AuthProvider'; // তোর AuthContext এর পাথ টা ঠিক করে নিস
+import { AuthContext } from '../AuthProvider/Authprovier';
+
 
 const Signin = () => {
-    // ১. Context থেকে googleLogin ফাংশনটা বের করে আনা
     const { googleLogin } = useContext(AuthContext);
     
     const { register, trigger, getValues, formState: { errors } } = useForm();
     const navigate = useNavigate();
-
     const handleGoogleSignIn = async () => {
-        // প্রথমে চেক করবে ইনপুট ফিল্ডগুলো ঠিক আছে কি না
+        
         const isValid = await trigger();
         
         if (isValid) {
@@ -23,13 +22,10 @@ const Signin = () => {
             console.log("Collected Local Data:", formData);
 
             try {
-                // ২. গুগল পপআপ ওপেন করা
+               
                 const result = await googleLogin();
                 const user = result.user;
                 console.log("Firebase User:", user);
-
-                // ৩. সফলভাবে সাইন ইন হলে হোমে পাঠিয়ে দেওয়া
-                // এখানে তুই চাইলে তোর ব্যাকএন্ডে (Axios) formData + user data পাঠাতে পারিস
                 navigate('/'); 
                 
             } catch (error) {
@@ -40,8 +36,6 @@ const Signin = () => {
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 md:p-10 font-sans relative overflow-hidden">
-            
-            {/* 🏠 Back to Home Button (White Background Concept) */}
             <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -56,8 +50,6 @@ const Signin = () => {
             </motion.div>
 
             <div className="max-w-5xl w-full grid md:grid-cols-2 bg-[#111] rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative">
-                
-                {/* 💡 Left Side: Quote Section */}
                 <div className="flex flex-col justify-center p-8 md:p-12 pt-24 bg-linear-to-br from-orange-600 to-orange-700 text-white relative overflow-hidden">
                     <div className="absolute top-[-10%] right-[-10%] w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
                     <div className="absolute bottom-[-10%] left-[-10%] w-32 h-32 bg-black/20 rounded-full blur-2xl"></div>
@@ -76,8 +68,6 @@ const Signin = () => {
                         <p className="text-orange-200 text-sm md:text-lg italic opacity-80">- Cory House</p>
                     </motion.div>
                 </div>
-
-                {/* 📝 Right Side: Form Content */}
                 <div className="p-8 md:p-12 flex flex-col justify-center bg-[#0d0d0d] md:bg-transparent">
                     <div className="md:hidden mb-8 flex justify-center">
                         <Logo />

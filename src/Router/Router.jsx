@@ -6,6 +6,7 @@ import MyTechnologies from '../Home/My Technologies/MyTechnologies';
 import MyProjects from '../Home/MyProjects/MyProjects';
 import AdminControl from '../AdminControl/AdminControl';
 import Signin from '../AuthPage/Signin';
+import AdminRoute from '../Routes/AdminRoutes';
 
 const Router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "muntasir-admin", 
-        element: <AdminControl />
+        element: <AdminRoute><AdminControl /></AdminRoute> 
       },
     ],
   },
