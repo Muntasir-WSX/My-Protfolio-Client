@@ -5,6 +5,7 @@ import MyTechnologies from './My Technologies/MyTechnologies';
 import MyProjects from './MyProjects/MyProjects';
 import MyEducation from './MyEducation/MyEducation';
 import MyExperience from './MyExperience/MyExperience';
+import MyCertificates from './MyCertificates/MyCertificates';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <MyProjects></MyProjects>
             <MyEducation></MyEducation>
             <MyExperience></MyExperience>
+            <MyCertificates></MyCertificates>
         </div>
     );
 };
