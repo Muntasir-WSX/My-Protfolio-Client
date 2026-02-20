@@ -7,13 +7,14 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: "Home", path: "/" },
-    { name: "Skills", path: "/skills" },
-    { name: "Projects", path: "/projects" },
-    { name: "Education", path: "/education" },
-    { name: "Experience", path: "/experience" },
-    { name: "Contact", path: "/contact" },
-  ];
+  { name: "Home", path: "/" },
+  { name: "Skills", path: "/skills" },
+  { name: "Projects", path: "/projects" },
+  { name: "Education", path: "/education" },
+  { name: "Experience", path: "/experience" },
+  { name: "Contact", path: "/contact" },
+  { name: "Admin", path: "/muntasir-admin", adminOnly: true }, // অ্যাডমিন রাউট
+];
 
   return (
     <nav className="bg-[#0a0a0a] border-b border-gray-800 text-white px-6 md:px-12 z-50 relative">
