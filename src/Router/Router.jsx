@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router'; 
+import { createBrowserRouter, Navigate } from 'react-router'; 
 import MainLayouts from '../Layouts/MainLayouts';
 import Home from '../Home/Home';
 import MyTechnologies from '../Home/My Technologies/MyTechnologies';
@@ -31,10 +31,17 @@ const Router = createBrowserRouter([
         path: "projects",
         element: <MyProjects />
       },
-      {
+     
+    ],
+  },
+   {
         path: "muntasir-admin", 
         element: <AdminRoute><AdminLayouts></AdminLayouts></AdminRoute>,
         children: [
+          {
+      index: true, 
+      element: <Navigate to="manage-projects" replace /> 
+    },
           {
             path: "manage-projects",
             element: <ManageProjects /> 
@@ -63,8 +70,7 @@ const Router = createBrowserRouter([
         ]
 
       },
-    ],
-  },
+      // signin routes
    {
     path: "/signin",
     element: <Signin />

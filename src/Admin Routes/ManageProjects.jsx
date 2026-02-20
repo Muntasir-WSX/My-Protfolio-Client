@@ -25,9 +25,20 @@ const ManageProjects = () => {
         try {
             const res = await axiosPublic.post('/projects', projectInfo);
             if (res.data.insertedId) {
-                toast.success(" Project Added Succesfully 🚀", {
-                    style: { background: '#333', color: '#fff' }
-                });
+                toast("Project Added Successfully ", {
+                    duration: 4000,
+                    position: 'top-center',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#000', 
+                        color: '#ea580c',  
+                        border: '1px solid #333',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                    },
+                    }); 
                 reset();
             }
         } catch (error) {
