@@ -6,11 +6,13 @@ import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router'; 
 import Logo from '../SharedComponents/Logo/Logo';
 import { AuthContext } from '../AuthProvider/Authprovier';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 const Signin = () => {
     const { googleLogin } = useContext(AuthContext);
-    
+    const axiosPublic = useAxiosPublic();
+
     const { register, trigger, getValues, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const handleGoogleSignIn = async () => {
@@ -25,8 +27,21 @@ const Signin = () => {
                
                 const result = await googleLogin();
                 const user = result.user;
-                console.log("Firebase User:", user);
-                navigate('/'); 
+                const userInfo = {
+                    name: formData.name,     
+                    email: user?.email,        
+                    mobile: formData.mobile,  
+                    country: formData.country, 
+                    role: 'user',              
+                    photo: user?.photoURL      
+                };
+
+                const res = await axiosPublic.post('/users', userInfo);
+                
+                if (res.data) {
+                    console.log("User successfully saved to DB");
+                    navigate('/'); 
+                }
                 
             } catch (error) {
                 console.error("Login Failed:", error.message);
