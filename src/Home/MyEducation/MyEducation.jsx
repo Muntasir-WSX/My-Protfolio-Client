@@ -37,22 +37,25 @@ const MyEducation = () => {
             {/* Background Glow */}
             <div className="absolute top-1/2 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] -translate-y-1/2"></div>
 
-            <div className="container mx-auto max-w-5xl relative z-10">
+            <div className="container mx-auto max-w-7xl relative z-10">
                 {/* Header Section */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16 text-center lg:text-left"
-                >
-                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                        <span className="w-12 h-0.5 bg-orange-600"></span>
-                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">Academic Journey</h2>
-                    </div>
-                    <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        My <span className="text-transparent stroke-text-edu">Education</span>
-                    </h1>
-                </motion.div>
+                {/* --- Default Header Style --- */}
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="mb-16 text-center lg:text-left"
+                                >
+                                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                                        <span className="w-12 h-0.5 bg-orange-600"></span>
+                                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
+                                            Career Path
+                                        </h2>
+                                    </div>
+                                    <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
+                                        My <span className="text-transparent stroke-text-exp">Education</span>
+                                    </h1>
+                                </motion.div>
 
                 {/* Timeline Section */}
                 <motion.div 
