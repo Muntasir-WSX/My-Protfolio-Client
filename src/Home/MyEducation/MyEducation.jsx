@@ -53,7 +53,9 @@ const MyEducation = () => {
                                         </h2>
                                     </div>
                                     <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                                        My <span className="text-transparent stroke-text-exp">Education</span>
+                                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
+    Education
+</span>
                                     </h1>
                                 </motion.div>
 

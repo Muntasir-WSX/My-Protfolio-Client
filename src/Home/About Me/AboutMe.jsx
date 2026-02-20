@@ -40,7 +40,9 @@ const AboutMe = () => {
                         </h2>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        About <span className="text-transparent stroke-text-about">Me</span>
+                        About <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
+    Me
+</span>
                     </h1>
                 </motion.div>
 

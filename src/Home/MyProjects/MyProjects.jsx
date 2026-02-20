@@ -37,11 +37,13 @@ const MyProjects = () => {
                         </h2>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        Featured <span className="text-transparent stroke-text-proj">Projects</span>
+                        Featured <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
+    projects
+</span>
                     </h1>
                 </motion.div>
                 
-                {/* প্রজেক্ট গ্রিড */}
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700">
                     {displayedProjects.map(project => (
                         <ProjectCard key={project._id} project={project} />

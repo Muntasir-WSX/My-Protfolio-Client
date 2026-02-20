@@ -9,7 +9,6 @@ import Loader from '../../SharedComponents/Loader/Loader';
 const MyExperience = () => {
     const axiosPublic = useAxiosPublic();
 
-    // ডাটা ফেচ করা
     const { data: experiences = [], isLoading } = useQuery({
         queryKey: ['experience'],
         queryFn: async () => {
@@ -58,7 +57,9 @@ const MyExperience = () => {
                         </h2>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        My <span className="text-transparent stroke-text-exp">Experience</span>
+                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
+    Experience
+</span>
                     </h1>
                 </motion.div>
 
