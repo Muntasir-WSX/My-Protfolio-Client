@@ -7,47 +7,63 @@ import { useNavigate, Link } from 'react-router';
 import Logo from '../SharedComponents/Logo/Logo';
 import { AuthContext } from '../AuthProvider/Authprovier';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 
 const Signin = () => {
-    const { googleLogin } = useContext(AuthContext);
+    const { googleLogin , logOut } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
 
     const { register, trigger, getValues, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const handleGoogleSignIn = async () => {
-        
-        const isValid = await trigger();
-        
-        if (isValid) {
-            const formData = getValues();
-            console.log("Collected Local Data:", formData);
+    const isValid = await trigger();
+    
+    if (isValid) {
+        const formData = getValues();
+        try {
+            const result = await googleLogin();
+            const loggedInUser = result.user;
 
-            try {
-               
-                const result = await googleLogin();
-                const user = result.user;
-                const userInfo = {
-                    name: formData.name,     
-                    email: user?.email,        
-                    mobile: formData.mobile,  
-                    country: formData.country, 
-                    role: 'user',              
-                    photo: user?.photoURL      
-                };
-
-                const res = await axiosPublic.post('/users', userInfo);
-                
-                if (res.data) {
-                    console.log("User successfully saved to DB");
-                    navigate('/'); 
-                }
-                
-            } catch (error) {
-                console.error("Login Failed:", error.message);
+            if (loggedInUser.email !== "alimuntasir2001@gmail.com") {
+                await logOut(); 
+                toast("Nice try, stranger! But this kingdom has only one King. 👑", {
+                    duration: 4000,
+                    position: 'top-center',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#000', 
+                        color: '#ea580c',  
+                        border: '1px solid #333',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                    },
+                 }); 
+                return;
             }
+
+            const userInfo = {
+                name: formData.name,       
+                email: loggedInUser.email,        
+                image: loggedInUser.photoURL,     
+                mobile: formData.mobile,   
+                country: formData.country, 
+                role: 'admin', 
+            };
+
+            await axiosPublic.post('/users', userInfo);
+            toast.success("Welcome back, Master!", {
+                style: { background: '#000', color: '#fff' }
+            });
+            navigate('/'); 
+            
+        } catch (error) {
+            console.error("Login Error:", error.message);
         }
-    };
+    }
+};
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 md:p-10 font-sans relative overflow-hidden">

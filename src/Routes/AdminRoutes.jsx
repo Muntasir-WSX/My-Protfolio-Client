@@ -8,7 +8,7 @@ const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     if (loading) {
-       <Loader></Loader>
+      return <Loader></Loader>;
     }
 
    

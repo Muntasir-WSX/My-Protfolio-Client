@@ -1,17 +1,15 @@
 import React, { useState, useContext } from "react";
-import { NavLink, useNavigate, Link } from "react-router"; 
+import { NavLink, useNavigate, Link } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../Logo/Logo";
 import { AuthContext } from "../../AuthProvider/Authprovier";
 
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext); 
-  const navigate = useNavigate(); 
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
- 
-  const isAdmin = user && user.email === 'alimuntasir2001@gmail.com';
+  const isAdmin = user && user.email === "alimuntasir2001@gmail.com";
 
   const links = [
     { name: "Home", path: "/" },
@@ -24,13 +22,12 @@ const NavBar = () => {
     { name: "Admin", path: "/muntasir-admin", adminOnly: true },
   ];
 
- 
-  const filteredLinks = links.filter(link => !link.adminOnly || isAdmin);
+  const filteredLinks = links.filter((link) => !link.adminOnly || isAdmin);
 
   const handleSignOut = () => {
     logOut()
       .then(() => navigate("/"))
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -48,7 +45,9 @@ const NavBar = () => {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    isActive ? "text-orange-600 font-bold" : "hover:text-orange-500 transition-all text-gray-400"
+                    isActive
+                      ? "text-orange-600 font-bold"
+                      : "hover:text-orange-500 transition-all text-gray-400"
                   }
                 >
                   {link.name}
@@ -59,25 +58,23 @@ const NavBar = () => {
 
           {/* Conditional Rendering for Desktop Button */}
           {user ? (
-            <button 
-              onClick={handleSignOut} 
+            <button
+              onClick={handleSignOut}
               className="btn btn-sm btn-outline border-orange-600 text-white hover:bg-orange-600 hover:border-orange-600 rounded-full px-8 transition-all uppercase text-[10px] font-bold"
             >
               Sign Out
             </button>
           ) : (
-            <button 
-              onClick={() => navigate("/signin")} 
-              className="btn btn-sm btn-outline border-orange-600 text-white hover:bg-orange-600 hover:border-orange-600 rounded-full px-8 transition-all uppercase text-[10px] font-bold"
-            >
-              Sign In
-            </button>
+           null
           )}
         </div>
 
         {/* Mobile Hamburger */}
         <div className="lg:hidden">
-          <button onClick={() => setIsOpen(true)} className="group flex flex-col gap-1.5 items-end p-2">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="group flex flex-col gap-1.5 items-end p-2"
+          >
             <span className="w-8 h-0.5 bg-orange-600 group-hover:w-6 transition-all"></span>
             <span className="w-6 h-0.5 bg-white"></span>
             <span className="w-8 h-0.5 bg-orange-600 group-hover:w-4 transition-all"></span>
@@ -104,12 +101,19 @@ const NavBar = () => {
               className="fixed top-0 left-0 h-full w-[80%] max-w-75 bg-[#0d0d0d] border-r border-gray-800 z-70 flex flex-col shadow-2xl"
             >
               <div className="flex items-center px-4 py-6 border-b border-gray-900">
-                <Logo />
+                <div className="scale-75 origin-left">
+                  <Logo />
+                </div>
               </div>
 
               <ul className="flex flex-col gap-1 mt-4">
                 {filteredLinks.map((link, index) => (
-                  <motion.li key={link.name} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 * index }}>
+                  <motion.li
+                    key={link.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * index }}
+                  >
                     <NavLink
                       to={link.path}
                       onClick={() => setIsOpen(false)}
@@ -126,19 +130,17 @@ const NavBar = () => {
               {/* Conditional Rendering for Mobile Button */}
               <div className="mt-auto p-6">
                 {user ? (
-                   <button 
-                    onClick={() => { handleSignOut(); setIsOpen(false); }}
+                  <button
+                    onClick={() => {
+                      handleSignOut();
+                      setIsOpen(false);
+                    }}
                     className="w-full py-3 bg-white/5 border border-orange-600 text-orange-600 font-bold uppercase text-[10px] tracking-[0.2em] rounded-lg hover:bg-orange-600 hover:text-white transition-all"
                   >
                     Sign Out
                   </button>
                 ) : (
-                  <button 
-                    onClick={() => { navigate("/signin"); setIsOpen(false); }}
-                    className="w-full py-3 bg-orange-600 text-white font-bold uppercase text-[10px] tracking-[0.2em] rounded-lg shadow-lg shadow-orange-600/20 hover:bg-orange-500 transition-all"
-                  >
-                    Sign In Now
-                  </button>
+                 null
                 )}
               </div>
             </motion.div>
