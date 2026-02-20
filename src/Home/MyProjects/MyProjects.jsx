@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { FiPlus } from 'react-icons/fi';
+import { motion } from 'framer-motion'; // Motion অ্যাড করেছি এনিমেশনের জন্য
 
 const MyProjects = () => {
     const [projects, setProjects] = useState([]);
@@ -16,22 +17,29 @@ const MyProjects = () => {
     const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
     return (
-        <section className="relative bg-[#0a0a0a] py-24 px-6 overflow-hidden">
+        <section className="relative bg-[#0a0a0a] py-24 px-6 md:px-16 overflow-hidden">
             {/* Background Glow */}
             <div className="absolute top-1/2 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] z-0"></div>
             
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="mb-16 text-center">
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                        <span className="w-10 h-0.5 bg-orange-600"></span>
-                        <h2 className="text-orange-500 font-bold tracking-[0.2em] text-xs uppercase">
+                
+                {/* --- Updated Header Section (Left Aligned) --- */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 text-center lg:text-left"
+                >
+                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                        <span className="w-12 h-0.5 bg-orange-600"></span>
+                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
                             My Works
                         </h2>
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        Featured <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255, 255, 255, 0.3)" }}>Projects</span>
-                    </h2>
-                </div>
+                    <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
+                        Featured <span className="text-transparent stroke-text-proj">Projects</span>
+                    </h1>
+                </motion.div>
                 
                 {/* প্রজেক্ট গ্রিড */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700">
@@ -45,12 +53,11 @@ const MyProjects = () => {
                     <div className="mt-16 text-center">
                         <button 
                             onClick={() => setShowAll(true)}
-                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-gray-800 hover:border-orange-600 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300"
+                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-gray-800 hover:border-orange-600 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 overflow-hidden"
                         >
                             <span className="relative z-10">Show More Projects</span>
                             <FiPlus className="relative z-10 text-lg group-hover:rotate-90 transition-transform duration-300" />
-                            {/* Hover effect background */}
-                            <div className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full z-0"></div>
+                            <div className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 z-0"></div>
                         </button>
                     </div>
                 )}
@@ -61,6 +68,18 @@ const MyProjects = () => {
                     </div>
                 )}
             </div>
+
+            {/* Stroke Text Style */}
+            <style jsx="true">{`
+                .stroke-text-proj {
+                    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+                }
+                @media (max-width: 768px) {
+                    .stroke-text-proj {
+                        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+                    }
+                }
+            `}</style>
         </section>
     );
 };

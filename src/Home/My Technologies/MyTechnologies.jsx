@@ -9,8 +9,6 @@ import {
 } from 'react-icons/si';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-
-
 const MyTechnologies = () => {
     const [showAll, setShowAll] = useState(false);
 
@@ -55,26 +53,37 @@ const MyTechnologies = () => {
     const visibleTech = showAll ? allTech : allTech.slice(0, 9);
 
     return (
-        <section className="py-20 bg-[#0a0a0a] px-6">
-            <div className="max-w-6xl mx-auto text-center">
+        <section className="py-24 bg-[#0a0a0a] px-6 md:px-16 overflow-hidden">
+             {/* Background Glow */}
+             <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] z-0"></div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
                 
+                {/* Header (Left Aligned on Desktop) */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16"
+                    className="mb-16 text-center lg:text-left"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-white">
-                        My <span className="text-orange-600">Tech Stack</span>
-                    </h2>
-                    <div className="w-24 h-1 bg-linear-to-r from-transparent via-orange-500 to-transparent mx-auto mt-4"></div>
+                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                        <span className="w-12 h-0.5 bg-orange-600"></span>
+                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
+                            Skill Set
+                        </h2>
+                    </div>
+                    <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
+                        My <span className="text-transparent stroke-text-tech">Technologies</span>
+                    </h1>
                 </motion.div>
 
+                {/* --- Grid Fixed to Center --- */}
                 <motion.div 
                     variants={containerVariants}
                     initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-4xl mx-auto" // mx-auto added here
                 >
                     <AnimatePresence mode='popLayout'>
                         {visibleTech.map((tech) => (
@@ -85,12 +94,12 @@ const MyTechnologies = () => {
                                 initial="hidden"
                                 animate="visible"
                                 exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-                                className="group bg-[#111111] border border-white/10 p-10 rounded-3xl flex flex-col items-center gap-4 hover:border-orange-600/40 transition-all duration-300 shadow-2xl relative overflow-hidden"
+                                className="group bg-[#111111] border border-white/10 p-8 md:p-10 rounded-3xl flex flex-col items-center gap-4 hover:border-orange-600/40 transition-all duration-300 shadow-2xl relative overflow-hidden"
                             >
-                                <div className="text-6xl transition-transform duration-500 group-hover:scale-110 relative z-10">
+                                <div className="text-5xl md:text-6xl transition-transform duration-500 group-hover:scale-110 relative z-10">
                                     {tech.icon}
                                 </div>
-                                <span className="text-gray-400 text-xs font-bold uppercase tracking-widest group-hover:text-white transition-colors relative z-10">
+                                <span className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest group-hover:text-white transition-colors relative z-10 text-center">
                                     {tech.name}
                                 </span>
                                 <div className="absolute inset-0 bg-linear-to-br from-orange-600/0 to-orange-600/5 group-hover:to-orange-600/10 transition-colors duration-500"></div>
@@ -99,19 +108,37 @@ const MyTechnologies = () => {
                     </AnimatePresence>
                 </motion.div>
 
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setShowAll(!showAll)}
-                    className="mt-16 inline-flex items-center gap-3 px-10 py-4 bg-orange-600 text-white font-bold uppercase text-xs tracking-[0.3em] rounded-full transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)]"
-                >
-                    {showAll ? (
-                        <>Show Less <FiChevronUp className="text-xl" /></>
-                    ) : (
-                        <>Show More <FiChevronDown className="text-xl" /></>
-                    )}
-                </motion.button>
+                {/* Button Centered */}
+                <div className="mt-16 text-center">
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setShowAll(!showAll)}
+                        className="group relative inline-flex items-center gap-3 px-10 py-4 bg-transparent border border-gray-800 hover:border-orange-600 text-white font-bold uppercase text-xs tracking-widest rounded-full transition-all duration-300 overflow-hidden"
+                    >
+                        <span className="relative z-10">
+                            {showAll ? "Show Less" : "Show More"}
+                        </span>
+                        {showAll ? (
+                            <FiChevronUp className="relative z-10 text-xl group-hover:-translate-y-1 transition-transform" />
+                        ) : (
+                            <FiChevronDown className="relative z-10 text-xl group-hover:translate-y-1 transition-transform" />
+                        )}
+                        <div className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 z-0"></div>
+                    </motion.button>
+                </div>
             </div>
+
+            <style jsx="true">{`
+                .stroke-text-tech {
+                    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+                }
+                @media (max-width: 768px) {
+                    .stroke-text-tech {
+                        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+                    }
+                }
+            `}</style>
         </section>
     );
 };
