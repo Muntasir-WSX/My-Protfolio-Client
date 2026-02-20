@@ -4,15 +4,12 @@ import { FaReact, FaNodeJs, FaFire, FaPhp, FaWordpress, FaHtml5, FaCss3Alt } fro
 import { 
     SiTailwindcss, SiDaisyui, SiRadixui, SiShadcnui, 
     SiReactrouter, SiExpress, SiMongodb, SiAxios, 
-    SiNextdotjs, SiSupabase, SiTypescript, SiJavascript
+    SiNextdotjs, SiSupabase, SiTypescript, SiJavascript,
+    SiReactquery
 } from 'react-icons/si';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-const TanStackQueryIcon = () => (
-    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="fill-[#FF4154] w-[1em] h-[1em]">
-        <path d="M11.996 0a12 12 0 1 0 12 12A12.003 12.003 0 0 0 11.996 0zm0 21.82A9.82 9.82 0 1 1 21.82 12a9.823 9.823 0 0 1-9.824 9.82zM7.18 10.96a1.36 1.36 0 1 0 0-2.72 1.36 1.36 0 0 0 0 2.72zm9.64 0a1.36 1.36 0 1 0 0-2.72 1.36 1.36 0 0 0 0 2.72zm-4.82 6.55c2.45 0 4.54-1.58 5.3-3.79H6.7c.76 2.21 2.85 3.79 5.3 3.79z"/>
-    </svg>
-);
+
 
 const MyTechnologies = () => {
     const [showAll, setShowAll] = useState(false);
@@ -29,12 +26,12 @@ const MyTechnologies = () => {
         { name: 'MongoDB', icon: <SiMongodb className="text-[#47A248]" /> },
         { name: 'Tailwind', icon: <SiTailwindcss className="text-[#06B6D4]" /> },
         { name: 'React Router', icon: <SiReactrouter className="text-[#CA4245]" /> },
-        { name: 'TanStack Query', icon: <TanStackQueryIcon /> }, 
+        { name: 'TanStack Query', icon: <SiReactquery className="text-[#f44150]" />  }, 
         { name: 'Firebase', icon: <FaFire className="text-[#FFCA28]" /> },
         { name: 'Radix UI', icon: <SiRadixui className="text-[#FFCA28]" /> },
         { name: 'Supabase', icon: <SiSupabase className="text-[#3ECF8E]" /> },
         { name: 'Shadcn UI', icon: <SiShadcnui className="text-white" /> },
-        { name: 'DaisyUI', icon: <SiDaisyui className="text-[#1AD1A5]" /> },
+        { name: 'DaisyUI', icon: <SiDaisyui className="text-[#ebd727]" /> },
         { name: 'Axios', icon: <SiAxios className="text-[#5A29E4]" /> },
         { name: 'WordPress', icon: <FaWordpress className="text-[#21759B]" /> },
     ];

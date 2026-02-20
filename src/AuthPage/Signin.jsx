@@ -54,9 +54,20 @@ const Signin = () => {
             };
 
             await axiosPublic.post('/users', userInfo);
-            toast.success("Welcome back, Master!", {
-                style: { background: '#000', color: '#fff' }
-            });
+            toast("Welcome Back Master 👑", {
+                    duration: 4000,
+                    position: 'top-center',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#000', 
+                        color: '#ea580c',  
+                        border: '1px solid #333',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                    },
+                 }); 
             navigate('/'); 
             
         } catch (error) {
