@@ -1,12 +1,67 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { FiPlus } from 'react-icons/fi';
 
 const MyProjects = () => {
+    const [projects, setProjects] = useState([]);
+    const [showAll, setShowAll] = useState(false); 
+    const axiosPublic = useAxiosPublic();
+
+    useEffect(() => {
+        axiosPublic.get('/projects')
+            .then(res => setProjects(res.data))
+    }, [axiosPublic]);
+
+    const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
     return (
-        <div>
-            <h1> My Project</h1>
-            <ProjectCard></ProjectCard>
-        </div>
+        <section className="relative bg-[#0a0a0a] py-24 px-6 overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute top-1/2 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] z-0"></div>
+            
+            <div className="max-w-7xl mx-auto relative z-10">
+                <div className="mb-16 text-center">
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <span className="w-10 h-0.5 bg-orange-600"></span>
+                        <h2 className="text-orange-500 font-bold tracking-[0.2em] text-xs uppercase">
+                            My Works
+                        </h2>
+                    </div>
+                    <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
+                        Featured <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255, 255, 255, 0.3)" }}>Projects</span>
+                    </h2>
+                </div>
+                
+                {/* প্রজেক্ট গ্রিড */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700">
+                    {displayedProjects.map(project => (
+                        <ProjectCard key={project._id} project={project} />
+                    ))}
+                </div>
+
+                {/* Show More Button */}
+                {!showAll && projects.length > 3 && (
+                    <div className="mt-16 text-center">
+                        <button 
+                            onClick={() => setShowAll(true)}
+                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-gray-800 hover:border-orange-600 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300"
+                        >
+                            <span className="relative z-10">Show More Projects</span>
+                            <FiPlus className="relative z-10 text-lg group-hover:rotate-90 transition-transform duration-300" />
+                            {/* Hover effect background */}
+                            <div className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full z-0"></div>
+                        </button>
+                    </div>
+                )}
+                
+                {projects.length === 0 && (
+                    <div className="text-center py-20 border border-dashed border-gray-800 rounded-3xl">
+                        <p className="text-gray-500 font-light tracking-widest uppercase">No projects uploaded yet, mama!</p>
+                    </div>
+                )}
+            </div>
+        </section>
     );
 };
 

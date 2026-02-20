@@ -1,64 +1,74 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { FiArrowUpRight, FiGithub, FiServer } from 'react-icons/fi';
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="group bg-[#1a1a2e] border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:border-orange-600/50 transition-all duration-500">
+    <div className="group bg-[#111111]/50 border border-gray-800/50 rounded-3xl overflow-hidden backdrop-blur-sm hover:border-orange-600/30 transition-all duration-500">
       
-      {/* 📸 Image Container with Auto-Scroll */}
-      <div className="relative h-64 overflow-hidden cursor-pointer">
+      {/* 📸 Image Container with Banner-like Shadow */}
+      <div className="relative h-60 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full object-top transition-all duration-3000 ease-linear transform group-hover:translate-y-[-70%]"
+          className="w-full object-top transition-all duration-[8s] ease-linear transform group-hover:translate-y-[calc(-100%+240px)]" 
           style={{ objectFit: 'cover' }}
         />
-        {/* Overlay on Hover */}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60"></div>
       </div>
 
       {/* 📝 Content Section */}
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-          {project.description}
-        </p>
+      <div className="p-6 space-y-4">
+        <div>
+           <h3 className="text-xl font-black text-white uppercase tracking-tighter group-hover:text-orange-500 transition-colors">
+            {project.title}
+          </h3>
+          <p className="text-gray-400 text-xs mt-2 leading-relaxed line-clamp-2 font-light">
+            {project.description}
+          </p>
+        </div>
 
-        {/* 🛠 Tech Stack Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.technologies.map((tech, index) => (
+        {/* 🛠 Tech Stack Tags (Minimalist) */}
+        <div className="flex flex-wrap gap-2">
+          {project.tags && project.tags.map((tech, index) => (
             <span 
               key={index} 
-              className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 uppercase tracking-wider"
+              className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] text-gray-400 uppercase tracking-widest font-medium"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        {/* 🔗 Action Buttons */}
-        <div className="grid grid-cols-2 gap-3">
+        {/* 🔗 Action Buttons (Banner Style) */}
+        <div className="pt-2 space-y-3">
           <a 
             href={project.liveLink} 
-            className="text-center py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg font-bold text-sm hover:scale-105 transition-transform"
+            target="_blank" 
+            rel="noreferrer" 
+            className="flex items-center justify-center gap-2 w-full py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300"
           >
-            Live Demo
+            Live Demo <FiArrowUpRight />
           </a>
-          <button className="py-2 border border-white/10 text-white rounded-lg text-sm hover:bg-white/5 transition-all">
-            Details
-          </button>
-          <a 
-            href={project.serverCode} 
-            className="text-center py-2 bg-gray-800 text-white rounded-lg text-xs hover:bg-gray-700 transition-all"
-          >
-            Server Code
-          </a>
-          <a 
-            href={project.clientCode} 
-            className="text-center py-2 bg-gray-800 text-white rounded-lg text-xs hover:bg-gray-700 transition-all"
-          >
-            Client Code
-          </a>
+          
+          <div className="grid grid-cols-2 gap-3">
+            <a 
+              href={project.clientCode} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="flex items-center justify-center gap-2 py-2.5 border border-gray-800 text-gray-400 hover:bg-white hover:text-black rounded-full text-[10px] uppercase font-bold transition-all"
+            >
+              Client <FiGithub />
+            </a>
+            <a 
+              href={project.serverCode} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="flex items-center justify-center gap-2 py-2.5 border border-gray-800 text-gray-400 hover:bg-white hover:text-black rounded-full text-[10px] uppercase font-bold transition-all"
+            >
+              Server <FiServer />
+            </a>
+          </div>
         </div>
       </div>
     </div>

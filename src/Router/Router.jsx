@@ -4,9 +4,15 @@ import MainLayouts from '../Layouts/MainLayouts';
 import Home from '../Home/Home';
 import MyTechnologies from '../Home/My Technologies/MyTechnologies';
 import MyProjects from '../Home/MyProjects/MyProjects';
-import AdminControl from '../AdminControl/AdminControl';
 import Signin from '../AuthPage/Signin';
 import AdminRoute from '../Routes/AdminRoutes';
+import AdminLayouts from '../Layouts/AdminLayouts';
+import ManageExperience from '../Admin Routes/ManageExperience';
+import ManageEducation from '../Admin Routes/ManageEducation';
+import ManageCertificates from '../Admin Routes/ManageCertificates';
+import ClientMessages from '../Admin Routes/ClientMessages';
+import AdminSettings from '../Admin Routes/AdminSettings';
+import ManageProjects from '../Admin Routes/ManageProjects';
 
 const Router = createBrowserRouter([
   {
@@ -27,7 +33,35 @@ const Router = createBrowserRouter([
       },
       {
         path: "muntasir-admin", 
-        element: <AdminRoute><AdminControl /></AdminRoute> 
+        element: <AdminRoute><AdminLayouts></AdminLayouts></AdminRoute>,
+        children: [
+          {
+            path: "manage-projects",
+            element: <ManageProjects /> 
+          },
+           {
+            path: "manage-education",
+            element: <ManageEducation />
+          },
+          {
+            path: "manage-experience",
+            element: <ManageExperience />
+          },
+         
+          {
+            path: "manage-certificates",
+            element: <ManageCertificates />
+          },
+          {
+            path: "messages",
+            element: <ClientMessages />
+          },
+          {
+            path: "settings",
+            element: <AdminSettings />
+          }
+        ]
+
       },
     ],
   },
