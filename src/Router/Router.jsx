@@ -16,6 +16,7 @@ import ManageProjects from '../Admin Routes/ManageProjects';
 import Contact from '../Home/Contact/Contact';
 import MyEducation from '../Home/MyEducation/MyEducation';
 import MyExperience from '../Home/MyExperience/MyExperience';
+import MyCertificates from '../Home/MyCertificates/MyCertificates';
 
 const Router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const Router = createBrowserRouter([
       {
         path: "experience",
         element:<MyExperience></MyExperience>
+      },
+      {
+        path:"certificate",
+        element:<MyCertificates></MyCertificates>
       }
      
     ],

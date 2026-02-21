@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* index.css */
+@import "tailwindcss";
+@plugin "daisyui";
+
+.active {
+  color: #ea580c !important; 
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}

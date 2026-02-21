@@ -2,6 +2,8 @@ import React from 'react';
 import { FaLinkedinIn, FaGithub, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+// react-scroll থেকে Link ইমপোর্ট করতে হবে (নামটা ক্ল্যাশে এড়াতে alias ইউজ করবি)
+import { Link as ScrollLink } from "react-scroll"; 
 
 const Banner = () => {
     const socialLinks = [
@@ -11,7 +13,6 @@ const Banner = () => {
         { icon: <FaFacebookF />, link: "https://www.facebook.com/muntasir.mahmud.9843", name: "Facebook" },
     ];
 
-    
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -23,7 +24,6 @@ const Banner = () => {
         }
     };
 
-    
     const itemVariants = {
         hidden: { opacity: 0, y: 20, filter: "blur(10px)" }, 
         visible: { 
@@ -35,7 +35,7 @@ const Banner = () => {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center bg-[#0a0a0a] overflow-hidden px-6 md:px-16 py-12">
+        <section id="home" className="relative min-h-screen flex items-center bg-[#0a0a0a] overflow-hidden px-6 md:px-16 py-12">
             
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 rounded-full blur-[100px]"></div>
@@ -72,7 +72,7 @@ const Banner = () => {
                     </div>
                 </motion.div>
 
-                {/* Text Content Section - Updated with Stagger effect */}
+                {/* Text Content Section */}
                 <div className="order-2 lg:order-1 relative z-20 -mt-12 lg:mt-0 text-center lg:text-left">
                     <motion.div 
                         variants={containerVariants}
@@ -114,9 +114,17 @@ const Banner = () => {
                                Download Resume
                                 <FiArrowUpRight className="text-xl group-hover:rotate-45 transition-transform" />
                             </button>
-                            <button className="btn btn-outline border-gray-700 text-white hover:bg-white hover:text-black h-14 rounded-full px-8 transition-all duration-300">
+                            
+                            {/* ফিক্সড বাটন: এখানে ScrollLink ইউজ করা হয়েছে */}
+                            <ScrollLink 
+                                to="contact" 
+                                smooth={true} 
+                                duration={800} 
+                                offset={-80}
+                                className="btn btn-outline border-gray-700 text-white hover:bg-white hover:text-black h-14 rounded-full px-8 transition-all duration-300 flex items-center justify-center cursor-pointer"
+                            >
                                 Get In Touch
-                            </button>
+                            </ScrollLink>
                         </motion.div>
 
                         <motion.div 

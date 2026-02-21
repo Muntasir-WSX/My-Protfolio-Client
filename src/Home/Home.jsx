@@ -17,7 +17,7 @@ const Home = () => {
             <section id="projects"><MyProjects /></section>
             <section id="education"><MyEducation /></section>
             <section id="experience"><MyExperience /></section>
-            <section id="certificates"><MyCertificates /></section>
+            <section id="certificate"><MyCertificates /></section>
             <section id="contact"><Contact /></section>
         </div>
     );
