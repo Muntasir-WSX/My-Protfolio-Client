@@ -8,73 +8,86 @@ import Logo from '../SharedComponents/Logo/Logo';
 import { AuthContext } from '../AuthProvider/Authprovier';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
-
+import useAxiosSecure from '../Hooks/useAxiosSeceure';
 
 const Signin = () => {
-    const { googleLogin , logOut } = useContext(AuthContext);
+    const { googleLogin, logOut } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
-
+    const axiosSecure = useAxiosSecure();
     const { register, trigger, getValues, formState: { errors } } = useForm();
     const navigate = useNavigate();
+
     const handleGoogleSignIn = async () => {
-    const isValid = await trigger();
-    
-    if (isValid) {
-        const formData = getValues();
-        try {
-            const result = await googleLogin();
-            const loggedInUser = result.user;
+        const isValid = await trigger();
+        
+        if (isValid) {
+            const formData = getValues();
+            try {
+                const result = await googleLogin();
+                const loggedInUser = result.user;
 
-            if (loggedInUser.email !== "alimuntasir2001@gmail.com") {
-                await logOut(); 
-                toast("Nice try, stranger! But this kingdom has only one King. 👑", {
-                    duration: 4000,
-                    position: 'top-center',
-                    style: {
-                        borderRadius: '10px',
-                        background: '#000', 
-                        color: '#ea580c',  
-                        border: '1px solid #333',
-                        fontSize: '12px',
-                        fontWeight: 'bold',
-                        textTransform: 'uppercase',
-                        letterSpacing: '1px'
-                    },
-                 }); 
-                return;
+                // Admin Email Verification
+                if (loggedInUser.email !== "alimuntasir2001@gmail.com") {
+                    await logOut(); 
+                    toast("Nice try, stranger! But this kingdom has only one King. 👑", {
+                        duration: 4000,
+                        position: 'top-center',
+                        style: {
+                            borderRadius: '10px',
+                            background: '#000', 
+                            color: '#ea580c',  
+                            border: '1px solid #333',
+                            fontSize: '12px',
+                            fontWeight: 'bold',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px'
+                        },
+                    }); 
+                    return;
+                }
+
+                // --- JWT Generation & Storage ---
+                const userInfoForToken = { email: loggedInUser.email };
+                const tokenRes = await axiosPublic.post('/jwt', userInfoForToken);
+                
+                if (tokenRes.data.token) {
+                    localStorage.setItem('access-token', tokenRes.data.token);
+
+                    const userInfo = {
+                        name: formData.name,       
+                        email: loggedInUser.email,         
+                        image: loggedInUser.photoURL,     
+                        mobile: formData.mobile,   
+                        country: formData.country, 
+                        role: 'admin', 
+                    };
+
+                    // Save user to DB
+                    await axiosSecure.post('/users', userInfo);
+                    
+                    toast.success("Welcome Back Master 👑", {
+                        duration: 4000,
+                        position: 'top-center',
+                        style: {
+                            borderRadius: '10px',
+                            background: '#000', 
+                            color: '#ea580c',  
+                            border: '1px solid #333',
+                            fontSize: '12px',
+                            fontWeight: 'bold',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px'
+                        },
+                    }); 
+                    navigate('/'); 
+                }
+                
+            } catch (error) {
+                console.error("Login Error:", error.message);
+                toast.error("Authentication failed!");
             }
-
-            const userInfo = {
-                name: formData.name,       
-                email: loggedInUser.email,        
-                image: loggedInUser.photoURL,     
-                mobile: formData.mobile,   
-                country: formData.country, 
-                role: 'admin', 
-            };
-
-            await axiosPublic.post('/users', userInfo);
-            toast("Welcome Back Master 👑", {
-                    duration: 4000,
-                    position: 'top-center',
-                    style: {
-                        borderRadius: '10px',
-                        background: '#000', 
-                        color: '#ea580c',  
-                        border: '1px solid #333',
-                        fontSize: '12px',
-                        fontWeight: 'bold',
-                        textTransform: 'uppercase',
-                        letterSpacing: '1px'
-                    },
-                 }); 
-            navigate('/'); 
-            
-        } catch (error) {
-            console.error("Login Error:", error.message);
         }
-    }
-};
+    };
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 md:p-10 font-sans relative overflow-hidden">
