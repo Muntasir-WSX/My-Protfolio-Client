@@ -6,8 +6,6 @@ const Logo = () => {
     return (
         <div className="flex flex-col items-start cursor-pointer group">
             <div className="flex items-center gap-2">
-                
-                {/* Classic Deer Icon with Animation */}
                 <motion.div 
                     whileHover={{ 
                         scale: 1.1, 
@@ -24,7 +22,6 @@ const Logo = () => {
                         <span className="text-orange-600">u</span>
                         n
                         <span className="relative px-3 mx-1 inline-block">
-                            {/* Sharp Geometric Background */}
                             <span className="absolute inset-0 bg-orange-600 -skew-x-12 transform group-hover:skew-x-0 transition-transform duration-500 rounded-sm"></span>
                             <span className="relative z-10 text-white italic">TASIR</span>
                         </span>

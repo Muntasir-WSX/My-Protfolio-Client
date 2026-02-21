@@ -8,9 +8,7 @@ import Loader from '../SharedComponents/Loader/Loader';
 const ClientMessages = () => {
     const axiosPublic = useAxiosPublic();
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 8; // এক পেজে কয়টা মেসেজ দেখাবি
-
-    // ১. টোটাল মেসেজ কাউন্ট আনা (পেজিনেশনের জন্য)
+    const itemsPerPage = 8; 
     const { data: countData } = useQuery({
         queryKey: ['messagesCount'],
         queryFn: async () => {

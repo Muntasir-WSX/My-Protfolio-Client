@@ -17,7 +17,7 @@ const Contact = () => {
             phone: data.phone,
             message: data.message,
             date: new Date().toLocaleString(),
-            status: 'unread' // Admin প্যানেলে ফিল্টার করার জন্য
+            status: 'unread'
         };
 
         try {

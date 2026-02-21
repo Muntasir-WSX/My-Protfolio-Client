@@ -33,13 +33,11 @@ const NavBar = () => {
     }).catch((err) => console.log(err));
   };
 
-  // ডেক্সটপ ও মোবাইল এর জন্য কমন আইটেম রেন্ডারার
   const NavItem = ({ link, mobile = false }) => {
     const baseClass = mobile 
       ? "block w-full px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] transition-all cursor-pointer text-gray-400 hover:text-orange-500" 
       : "cursor-pointer transition-all uppercase font-medium tracking-widest text-[11px] text-gray-400 hover:text-orange-500";
 
-    // যদি হোম পেজে না থাকি, সব লিঙ্ককে হোম পেজে পাঠিয়ে দিবে
     if (!isHomePage) {
       return (
         <RouterLink to="/" className={baseClass} onClick={() => setIsOpen(false)}>
@@ -47,8 +45,6 @@ const NavBar = () => {
         </RouterLink>
       );
     }
-
-    // হোম পেজে থাকলে স্মুথ স্ক্রল করবে
     return (
       <ScrollLink
         to={link.to}

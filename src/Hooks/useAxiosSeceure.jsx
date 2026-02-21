@@ -5,7 +5,6 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-    // interceptor token
     return axiosSecure;
 };
 

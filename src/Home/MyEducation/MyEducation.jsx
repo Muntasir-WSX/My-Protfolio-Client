@@ -39,7 +39,6 @@ const MyEducation = () => {
 
             <div className="container mx-auto max-w-7xl relative z-10">
                 {/* Header Section */}
-                {/* --- Default Header Style --- */}
                                 <motion.div 
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
