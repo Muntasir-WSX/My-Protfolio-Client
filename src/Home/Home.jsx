@@ -11,14 +11,14 @@ import Contact from './Contact/Contact';
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
-            <AboutMe></AboutMe>
-            <MyTechnologies></MyTechnologies>
-            <MyProjects></MyProjects>
-            <MyEducation></MyEducation>
-            <MyExperience></MyExperience>
-            <MyCertificates></MyCertificates>
-            <Contact></Contact>
+            <section id="home"><Banner /></section>
+            <section id="about"><AboutMe /></section>
+            <section id="skills"><MyTechnologies /></section>
+            <section id="projects"><MyProjects /></section>
+            <section id="education"><MyEducation /></section>
+            <section id="experience"><MyExperience /></section>
+            <section id="certificates"><MyCertificates /></section>
+            <section id="contact"><Contact /></section>
         </div>
     );
 };

@@ -13,6 +13,9 @@ import ManageCertificates from '../Admin Routes/ManageCertificates';
 import ClientMessages from '../Admin Routes/ClientMessages';
 import AdminSettings from '../Admin Routes/AdminSettings';
 import ManageProjects from '../Admin Routes/ManageProjects';
+import Contact from '../Home/Contact/Contact';
+import MyEducation from '../Home/MyEducation/MyEducation';
+import MyExperience from '../Home/MyExperience/MyExperience';
 
 const Router = createBrowserRouter([
   {
@@ -31,6 +34,19 @@ const Router = createBrowserRouter([
         path: "projects",
         element: <MyProjects />
       },
+      {
+        path: "contact",
+        element: <Contact></Contact>
+      },
+      {
+        path: "education",
+        element: <MyEducation></MyEducation>
+      },
+
+      {
+        path: "experience",
+        element:<MyExperience></MyExperience>
+      }
      
     ],
   },
