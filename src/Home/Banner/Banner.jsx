@@ -109,7 +109,7 @@ const Banner = () => {
                             variants={itemVariants}
                             className="flex flex-wrap justify-center lg:justify-start gap-5 pt-2"
                         >
-                            <a href='/CV_Muntasir (1).pdf' download="CV_Muntasir" className="group btn bg-orange-600 hover:bg-orange-700 border-none text-white px-8 h-14 rounded-full font-bold flex items-center gap-2 transition-all duration-300">
+                            <a href='/Muntasir.pdf' download="CV_Muntasir" className="group btn bg-orange-600 hover:bg-orange-700 border-none text-white px-8 h-14 rounded-full font-bold flex items-center gap-2 transition-all duration-300">
                                Download Resume
                                 <FiArrowUpRight className="text-xl group-hover:rotate-45 transition-transform" />
                             </a>
