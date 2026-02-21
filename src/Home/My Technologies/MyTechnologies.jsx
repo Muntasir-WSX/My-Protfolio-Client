@@ -32,21 +32,30 @@ const MyTechnologies = () => {
         { name: 'DaisyUI', icon: <SiDaisyui className="text-[#ebd727]" /> },
         { name: 'Axios', icon: <SiAxios className="text-[#5A29E4]" /> },
         { name: 'WordPress', icon: <FaWordpress className="text-[#21759B]" /> },
+        { name: 'PHP', icon: <FaPhp className="text-[#21759B]" /> },
     ];
 
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.08 }
+            transition: { staggerChildren: 0.01, delayChildren: 0.2  }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, scale: 0.8, y: 20 },
+        hidden: { opacity: 0, y: 30, 
+            filter: "blur(10px)" },
         visible: { 
-            opacity: 1, scale: 1, y: 0,
-            transition: { duration: 0.4, ease: "easeOut" } 
+           opacity: 1, 
+            y: 0, 
+            filter: "blur(0px)",
+            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+        },
+        exit: {
+            opacity: 0,
+            filter: "blur(10px)",
+            transition: { duration: 0.3 }
         }
     };
 
@@ -61,9 +70,10 @@ const MyTechnologies = () => {
                 
                 {/* Header (Left Aligned on Desktop) */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                   initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                     className="mb-16 text-center lg:text-left"
                 >
                     <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
@@ -93,9 +103,7 @@ const MyTechnologies = () => {
                                 key={tech.name}
                                 layout
                                 variants={itemVariants}
-                                initial="hidden"
-                                animate="visible"
-                                exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+                                whileHover={{ y: -10, transition: { duration: 0.3 } }}
                                 className="group bg-[#111111] border border-white/10 p-8 md:p-10 rounded-3xl flex flex-col items-center gap-4 hover:border-orange-600/40 transition-all duration-300 shadow-2xl relative overflow-hidden"
                             >
                                 <div className="text-5xl md:text-6xl transition-transform duration-500 group-hover:scale-110 relative z-10">
@@ -132,8 +140,11 @@ const MyTechnologies = () => {
             </div>
 
             <style jsx="true">{`
-                .stroke-text-tech {
+                .stroke-text {
                     -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+                }
+                .stroke-text:hover {
+                    -webkit-text-stroke: 1.5px #ea580c;
                 }
                 @media (max-width: 768px) {
                     .stroke-text-tech {

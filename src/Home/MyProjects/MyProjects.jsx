@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FiPlus } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const MyProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -12,7 +12,33 @@ const MyProjects = () => {
   useEffect(() => {
     axiosPublic.get("/projects").then((res) => setProjects(res.data));
   }, [axiosPublic]);
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, 
+        delayChildren: 0.1
+      }
+    }
+  };
 
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 40, 
+      filter: "blur(10px)" 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      transition: { 
+        duration: 0.8, 
+        ease: [0.22, 1, 0.36, 1] 
+      } 
+    }
+  };
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
@@ -23,9 +49,10 @@ const MyProjects = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* --- Updated Header Section (Left Aligned) --- */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="mb-16 text-center lg:text-left"
         >
           <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
@@ -42,15 +69,34 @@ const MyProjects = () => {
           </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700">
-          {displayedProjects.map((project) => (
-            <ProjectCard key={project._id} project={project} />
-          ))}
-        </div>
+        {/* --- Grid with Staggered Animation --- */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {displayedProjects.map((project) => (
+              <motion.div
+                key={project._id}
+                layout 
+                variants={cardVariants}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Show More Button */}
         {!showAll && projects.length > 3 && (
-          <div className="mt-16 text-center">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="mt-16 text-center"
+          >
             <button
               onClick={() => setShowAll(true)}
               className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-gray-800 hover:border-orange-600 text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 overflow-hidden"
@@ -59,13 +105,13 @@ const MyProjects = () => {
               <FiPlus className="relative z-10 text-lg group-hover:rotate-90 transition-transform duration-300" />
               <div className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 z-0"></div>
             </button>
-          </div>
+          </motion.div>
         )}
 
         {projects.length === 0 && (
           <div className="text-center py-20 border border-dashed border-gray-800 rounded-3xl">
             <p className="text-gray-500 font-light tracking-widest uppercase">
-              No projects uploaded yet, mama!
+              No projects uploaded yet!
             </p>
           </div>
         )}
@@ -75,6 +121,9 @@ const MyProjects = () => {
       <style jsx="true">{`
         .stroke-text-proj {
           -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+        }
+        .stroke-text:hover {
+          -webkit-text-stroke: 1.5px #ea580c;
         }
         @media (max-width: 768px) {
           .stroke-text-proj {
