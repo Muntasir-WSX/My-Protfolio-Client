@@ -1,12 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import useAxiosPublic from '../Hooks/useAxiosPublic';
+import useAxiosSecure from '../Hooks/useAxiosSeceure';
+
 
 
 const ManageProjects = () => {
     const { register, handleSubmit, reset } = useForm();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const onSubmit = async (data) => {
        
@@ -23,7 +24,7 @@ const ManageProjects = () => {
         };
 
         try {
-            const res = await axiosPublic.post('/projects', projectInfo);
+            const res = await axiosSecure.post('/projects', projectInfo);
             if (res.data.insertedId) {
                 toast("Project Added Successfully ", {
                     duration: 4000,

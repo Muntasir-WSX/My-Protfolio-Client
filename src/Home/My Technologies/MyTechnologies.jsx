@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaFire, FaPhp, FaWordpress, FaHtml5, FaCss3Alt } from 'react-icons/fa';
 import { 
     SiTailwindcss, SiDaisyui, SiRadixui, SiShadcnui, 
@@ -7,11 +7,8 @@ import {
     SiNextdotjs, SiSupabase, SiTypescript, SiJavascript,
     SiReactquery
 } from 'react-icons/si';
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const MyTechnologies = () => {
-    const [showAll, setShowAll] = useState(false);
-
     const allTech = [
         { name: 'HTML5', icon: <FaHtml5 className="text-[#E34F26]" /> },
         { name: 'CSS3', icon: <FaCss3Alt className="text-[#1572B6]" /> },
@@ -39,117 +36,88 @@ const MyTechnologies = () => {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.01, delayChildren: 0.2  }
+            transition: { staggerChildren: 0.05 }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 30, 
-            filter: "blur(10px)" },
+        hidden: { opacity: 0, scale: 0.8 },
         visible: { 
-           opacity: 1, 
-            y: 0, 
-            filter: "blur(0px)",
-            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
-        },
-        exit: {
-            opacity: 0,
-            filter: "blur(10px)",
-            transition: { duration: 0.3 }
+            opacity: 1, 
+            scale: 1,
+            transition: { duration: 0.5 } 
         }
     };
 
-    const visibleTech = showAll ? allTech : allTech.slice(0, 9);
-
     return (
-        <section className="py-24 bg-[#0a0a0a] px-6 md:px-16 overflow-hidden">
+        <section className="py-20 bg-[#0a0a0a] px-4 md:px-16 relative overflow-hidden">
              {/* Background Glow */}
-             <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] z-0"></div>
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-600/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
                 
-                {/* Header (Left Aligned on Desktop) */}
+                {/* Header */}
                 <motion.div 
-                   initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
-                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-16 text-center lg:text-left"
+                    className="mb-12 md:mb-20 text-center lg:text-left"
                 >
                     <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                        <span className="w-12 h-0.5 bg-orange-600"></span>
-                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
+                        <span className="w-10 md:w-12 h-0.5 bg-orange-600"></span>
+                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase">
                             Skill Set
                         </h2>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
-    Stack
-</span>
+                    <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
+                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">Stack</span>
                     </h1>
                 </motion.div>
 
-                {/* --- Grid Fixed to Center --- */}
+                {/* --- Grid Section --- */}
                 <motion.div 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-4xl mx-auto" // mx-auto added here
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
                 >
-                    <AnimatePresence mode='popLayout'>
-                        {visibleTech.map((tech) => (
-                            <motion.div
-                                key={tech.name}
-                                layout
-                                variants={itemVariants}
-                                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                                className="group bg-[#111111] border border-white/10 p-8 md:p-10 rounded-3xl flex flex-col items-center gap-4 hover:border-orange-600/40 transition-all duration-300 shadow-2xl relative overflow-hidden"
+                    {allTech.map((tech) => (
+                        <motion.div
+                            key={tech.name}
+                            variants={itemVariants}
+                            // 'group' class ta hover handle korar jonno use hobe
+                            className="group bg-[#111] border border-white/5 p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-orange-600/30 transition-all duration-500 relative"
+                        >
+                            {/* --- ICON SPINNER ON HOVER --- */}
+                            <motion.div 
+                                whileHover={{ rotate: 360 }}
+                                transition={{ duration: 0.8, ease: "easeInOut" }}
+                                className="text-4xl md:text-5xl z-10 origin-center"
                             >
-                                <div className="text-5xl md:text-6xl transition-transform duration-500 group-hover:scale-110 relative z-10">
-                                    {tech.icon}
-                                </div>
-                                <span className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest group-hover:text-white transition-colors relative z-10 text-center">
-                                    {tech.name}
-                                </span>
-                                <div className="absolute inset-0 bg-linear-to-br from-orange-600/0 to-orange-600/5 group-hover:to-orange-600/10 transition-colors duration-500"></div>
+                                {tech.icon}
                             </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </motion.div>
 
-                {/* Button Centered */}
-                <div className="mt-16 text-center">
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setShowAll(!showAll)}
-                        className="group relative inline-flex items-center gap-3 px-10 py-4 bg-transparent border border-gray-800 hover:border-orange-600 text-white font-bold uppercase text-xs tracking-widest rounded-full transition-all duration-300 overflow-hidden"
-                    >
-                        <span className="relative z-10">
-                            {showAll ? "Show Less" : "Show More"}
-                        </span>
-                        {showAll ? (
-                            <FiChevronUp className="relative z-10 text-xl group-hover:-translate-y-1 transition-transform" />
-                        ) : (
-                            <FiChevronDown className="relative z-10 text-xl group-hover:translate-y-1 transition-transform" />
-                        )}
-                        <div className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 z-0"></div>
-                    </motion.button>
-                </div>
+                            <span className="text-gray-500 text-[10px] font-bold uppercase tracking-widest group-hover:text-white transition-colors z-10 text-center">
+                                {tech.name}
+                            </span>
+                            
+                            {/* Hover Subtle Glow */}
+                            <div className="absolute inset-0 bg-orange-600 opacity-0 group-hover:opacity-[0.03] transition-opacity rounded-2xl"></div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
 
             <style jsx="true">{`
                 .stroke-text {
-                    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+                    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+                }
+                @media (min-width: 768px) {
+                    .stroke-text { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4); }
                 }
                 .stroke-text:hover {
                     -webkit-text-stroke: 1.5px #ea580c;
-                }
-                @media (max-width: 768px) {
-                    .stroke-text-tech {
-                        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-                    }
                 }
             `}</style>
         </section>

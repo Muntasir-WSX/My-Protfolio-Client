@@ -16,47 +16,45 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-orange-600 relative overflow-hidden">
-            {/* Aesthetic Background Pattern (Optional) */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#fff_1px,transparent_1px)] bg-size-[40px_40px]"></div>
-            </div>
+        <footer className="bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-orange-600/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
 
-            <div className="container mx-auto px-6 md:px-12 py-16 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-black">
+            <div className="container mx-auto px-6 md:px-12 py-12 md:py-16 relative z-10">
+                
+                {/* --- Grid Layout: Mobile (1), Tablet (2), Desktop (3) --- */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 items-start lg:items-center">
                     
-                    {/* Brand & Logo Section */}
-                    <div className="flex flex-col items-center md:items-start space-y-4">
-                        <div className="bg-black p-3 rounded-2xl inline-block shadow-2xl">
+                    {/* 1. Brand Section */}
+                    <div className="flex flex-col items-center sm:items-start space-y-4">
+                        <div className="scale-75 md:scale-90 origin-center sm:origin-left transition-transform">
                             <Logo />
                         </div>
-                        <p className="text-black/80 text-xs font-bold uppercase tracking-widest text-center md:text-left">
+                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] leading-relaxed text-center sm:text-left">
                             Crafting Digital Experiences <br /> 
-                            <span className="text-white">With Innovation & Precision</span>
+                            <span className="text-orange-500">With Innovation & Precision</span>
                         </p>
                     </div>
 
-                    {/* Quick Links Section */}
-                    <div className="flex flex-col items-center">
-                        <h4 className="text-black font-black uppercase tracking-tighter text-xl mb-6">Navigation</h4>
-                        <ul className="flex flex-wrap justify-center gap-6 font-bold uppercase text-[10px] tracking-widest">
-                            <li><Link to="/projects" className="hover:text-white transition-colors">Projects</Link></li>
-                            <li><Link to="/skills" className="hover:text-white transition-colors">Skills</Link></li>
-                            <li><Link to="/education" className="hover:text-white transition-colors">Education</Link></li>
-                            <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                    {/* 2. Navigation - Tablet e side-e shift hobe */}
+                    <div className="flex flex-col items-center sm:items-end lg:items-center">
+                        <h4 className="text-white font-black uppercase tracking-tighter text-lg mb-6">Navigation</h4>
+                        <ul className="grid grid-cols-2 gap-x-8 gap-y-4 sm:flex sm:flex-wrap sm:justify-end lg:justify-center font-bold uppercase text-[10px] tracking-widest text-gray-400">
+                            <li><Link to="/projects" className="hover:text-orange-500 transition-all">Projects</Link></li>
+                            <li><Link to="/skills" className="hover:text-orange-500 transition-all">Skills</Link></li>
+                            <li><Link to="/education" className="hover:text-orange-500 transition-all">Education</Link></li>
+                            <li><Link to="/contact" className="hover:text-orange-500 transition-all">Contact</Link></li>
                         </ul>
                     </div>
 
-                    {/* Socials & Top Scroll */}
-                    <div className="flex flex-col items-center md:items-end space-y-6">
+                    {/* 3. Socials & Scroll - Tablet e full width ba next line e balanced hobe */}
+                    <div className="flex flex-col items-center lg:items-end space-y-6 sm:col-span-2 lg:col-span-1 border-t border-white/5 pt-10 lg:border-none lg:pt-0">
                         <div className="flex gap-4">
                             {socialLinks.map((social) => (
                                 <a 
                                     key={social.name}
                                     href={social.link}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="w-12 h-12 bg-black text-orange-600 rounded-full flex items-center justify-center text-xl hover:bg-white hover:text-black transition-all duration-500 shadow-xl hover:-translate-y-2"
+                                    className="w-11 h-11 bg-[#111] border border-white/10 text-gray-400 rounded-full flex items-center justify-center text-lg hover:bg-orange-600 hover:text-white transition-all duration-300"
                                 >
                                     {social.icon}
                                 </a>
@@ -65,22 +63,23 @@ const Footer = () => {
                         
                         <button 
                             onClick={scrollToTop}
-                            className="group flex items-center gap-3 bg-black text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
+                            className="group flex items-center gap-2 bg-[#111] border border-white/10 text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all"
                         >
                             Back to Top <FaArrowUp className="group-hover:-translate-y-1 transition-transform" />
                         </button>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="mt-16 pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-black/60">
+                {/* --- Bottom Bar --- */}
+                <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 order-2 sm:order-1">
                         © 2026 Muntasir Mahmud. All Rights Reserved.
                     </p>
-                    <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-black rounded-full animate-pulse"></span>
-                        <p className="text-[10px] font-black uppercase tracking-widest text-black">
-                            Available for Freelance & Full-time
+                    
+                    <div className="flex items-center gap-2 px-4 py-2 bg-orange-600/5 border border-orange-600/10 rounded-full order-1 sm:order-2">
+                        <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
+                        <p className="text-[9px] font-bold uppercase tracking-widest text-orange-500">
+                            Available for Freelance
                         </p>
                     </div>
                 </div>

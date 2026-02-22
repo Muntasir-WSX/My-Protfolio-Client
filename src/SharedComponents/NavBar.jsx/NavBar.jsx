@@ -113,7 +113,7 @@ const NavBar = () => {
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[120]">
+          <div className="fixed inset-0 z-120">
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
               onClick={() => setIsOpen(false)} 
@@ -125,9 +125,12 @@ const NavBar = () => {
               transition={{ type: "tween", duration: 0.3 }}
               className="absolute top-0 left-0 h-full w-70 bg-[#0d0d0d] border-r border-gray-800 flex flex-col z-[130]"
             >
-              <div className="px-8 py-8 border-b border-gray-900">
-                <Logo />
-              </div>
+             {/* --- Drawer Logo Section --- */}
+<div className="px-6 py-6 md:px-8 md:py-8 border-b border-gray-900 flex justify-start items-center">
+    <div className="scale-75 origin-left md:scale-100 transition-transform duration-300">
+        <Logo />
+    </div>
+</div>
 
               <ul className="flex flex-col mt-4 overflow-y-auto">
                 {links.map((link) => (

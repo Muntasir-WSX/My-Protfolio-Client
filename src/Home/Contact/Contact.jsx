@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiSend, FiUser, FiMessageSquare } from 'react-icons/fi';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
-
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const axiosPublic = useAxiosPublic();
@@ -32,34 +31,47 @@ const Contact = () => {
     };
 
     return (
-        <section className="bg-[#0a0a0a] min-h-screen py-20 px-6 md:px-16 relative overflow-hidden">
-            {/* Background Glow */}
+        // Section padding and overflow matched with MyCertificates
+        <section id="contact" className="bg-[#0a0a0a] py-20 px-6 md:px-16 relative overflow-hidden">
+            {/* Background Glow - Matched position logic */}
             <div className="absolute top-0 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px]"></div>
 
-            <div className="container mx-auto max-w-6xl relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="container mx-auto max-w-7xl relative z-10">
+                
+                {/* Header Section - Exactly matched with MyCertificates layout */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 text-center lg:text-left"
+                >
+                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                        <span className="w-12 h-0.5 bg-orange-600"></span>
+                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">Get In Touch</h2>
+                    </div>
+                    <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
+                        Let's <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">Connect</span>
+                    </h1>
+                </motion.div>
+
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                     
-                    {/* Left Side: Info */}
+                    {/* Left Side: Info - Taking 5 columns on desktop */}
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
+                        className="lg:col-span-5 space-y-10"
                     >
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="w-12 h-0.5 bg-orange-600"></span>
-                            <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">Get In Touch</h2>
-                        </div>
-                        <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-8">
-                            Let's <span className="text-transparent stroke-text">Connect</span>
-                        </h1>
-                        
-                        <p className="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
+                        <p className="text-gray-400 text-lg max-w-md leading-relaxed">
                             Have a project in mind or just want to say hi? My inbox is always open.
                         </p>
 
                         <div className="space-y-6">
+                            {/* Email Card */}
                             <div className="flex items-center gap-6 group">
-                                <div className="p-4 bg-[#111] border border-gray-800 rounded-2xl text-orange-500 group-hover:border-orange-600 transition-all">
+                                <div className="p-4 bg-[#111] border border-gray-800 rounded-2xl text-orange-500 group-hover:border-orange-600 transition-all shadow-lg">
                                     <FiMail size={24} />
                                 </div>
                                 <div>
@@ -70,8 +82,9 @@ const Contact = () => {
                                 </div>
                             </div>
 
+                            {/* Phone Card */}
                             <div className="flex items-center gap-6 group">
-                                <div className="p-4 bg-[#111] border border-gray-800 rounded-2xl text-orange-500 group-hover:border-orange-600 transition-all">
+                                <div className="p-4 bg-[#111] border border-gray-800 rounded-2xl text-orange-500 group-hover:border-orange-600 transition-all shadow-lg">
                                     <FiPhone size={24} />
                                 </div>
                                 <div>
@@ -84,19 +97,19 @@ const Contact = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right Side: Form */}
+                    {/* Right Side: Form - Taking 7 columns on desktop */}
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="bg-[#111]/50 border border-gray-800 p-8 md:p-10 rounded-3xl backdrop-blur-sm"
+                        className="lg:col-span-7 bg-[#111]/50 border border-gray-800 p-6 md:p-10 rounded-3xl backdrop-blur-sm hover:border-orange-600/30 transition-all duration-500"
                     >
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                             <div className="relative">
                                 <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
                                 <input 
                                     {...register("name", { required: true })}
-                                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600"
+                                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 text-sm"
                                     placeholder="YOUR NAME"
                                 />
                             </div>
@@ -106,7 +119,7 @@ const Contact = () => {
                                     <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
                                     <input 
                                         {...register("email", { required: true })}
-                                        className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600"
+                                        className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 text-sm"
                                         placeholder="EMAIL ADDRESS"
                                     />
                                 </div>
@@ -114,7 +127,7 @@ const Contact = () => {
                                     <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
                                     <input 
                                         {...register("phone", { required: true })}
-                                        className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600"
+                                        className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 text-sm"
                                         placeholder="PHONE NUMBER"
                                     />
                                 </div>
@@ -125,14 +138,14 @@ const Contact = () => {
                                 <textarea 
                                     {...register("message", { required: true })}
                                     rows="5"
-                                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 resize-none"
+                                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 resize-none text-sm"
                                     placeholder="HOW CAN I HELP YOU?"
                                 ></textarea>
                             </div>
 
                             <button 
                                 type="submit"
-                                className="w-full py-4 bg-orange-600 text-white font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-black transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(234,88,12,0.2)]"
+                                className="w-full py-4 bg-orange-600 text-white font-bold uppercase tracking-[0.2em] text-xs rounded-xl hover:bg-white hover:text-black transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(234,88,12,0.2)] active:scale-95"
                             >
                                 Send Message <FiSend />
                             </button>
