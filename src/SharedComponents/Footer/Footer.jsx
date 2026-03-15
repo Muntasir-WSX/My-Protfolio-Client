@@ -63,7 +63,7 @@ const Footer = () => {
                         
                         <button 
                             onClick={scrollToTop}
-                            className="group flex items-center gap-2 bg-[#111] border border-white/10 text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all"
+                            className="group btn bg-orange-600 hover:bg-orange-700 border-none text-white p-6 h-10 rounded-full font-bold flex items-center gap-2 transition-all duration-300"
                         >
                             Back to Top <FaArrowUp className="group-hover:-translate-y-1 transition-transform" />
                         </button>

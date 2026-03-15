@@ -145,7 +145,7 @@ const Contact = () => {
 
                             <button 
                                 type="submit"
-                                className="w-full py-4 bg-orange-600 text-white font-bold uppercase tracking-[0.2em] text-xs rounded-xl hover:bg-white hover:text-black transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(234,88,12,0.2)] active:scale-95"
+                                className="w-full group btn bg-orange-600 hover:bg-orange-700 border-none text-white p-2 h-12 rounded-full font-bold flex items-center gap-2 transition-all duration-300"
                             >
                                 Send Message <FiSend />
                             </button>
