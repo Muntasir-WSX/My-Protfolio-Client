@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { FaEdit, FaTrash, FaProjectDiagram, FaGraduationCap, FaBriefcase, FaCertificate, FaEnvelope, FaTimes } from 'react-icons/fa';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
+import useAxiosSecure from '../Hooks/useAxiosSeceure';
 
 const AdminSettings = () => {
     const [activeTab, setActiveTab] = useState('projects');
@@ -10,6 +11,7 @@ const AdminSettings = () => {
     const [loading, setLoading] = useState(false);
     const [editingItem, setEditingItem] = useState(null); 
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const [currentPage, setCurrentPage] = useState(0);
     const [totalCount, setTotalCount] = useState(0);
@@ -51,7 +53,7 @@ const AdminSettings = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axiosPublic.delete(`/${activeTab}/${id}`);
+                    const res = await axiosSecure.delete(`/${activeTab}/${id}`);
                     if (res.data.deletedCount > 0) {
                         Swal.fire({
                             title: 'Deleted!',
@@ -92,7 +94,6 @@ const AdminSettings = () => {
                 organizer: form.field3.value,
             };
         } 
-        // ৩. এডুকেশনের জন্য (degree এবং institution)
         else if (activeTab === 'education') {
             updatedData = {
                 degree: form.field1.value,
@@ -110,7 +111,7 @@ const AdminSettings = () => {
         }
 
         try {
-            const res = await axiosPublic.patch(`/${activeTab}/${id}`, updatedData);
+            const res = await axiosSecure.patch(`/${activeTab}/${id}`, updatedData);
             if (res.data.modifiedCount > 0 || res.data.matchedCount > 0) {
                 toast.success("Successfully Updated! 🔥");
                 setEditingItem(null);

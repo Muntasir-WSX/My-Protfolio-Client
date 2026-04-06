@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import useAxiosPublic from '../Hooks/useAxiosPublic';
 import { FiBriefcase } from 'react-icons/fi';
+import useAxiosSeceure from '../Hooks/useAxiosSeceure';
 
 const ManageExperience = () => {
     const { register, handleSubmit, reset } = useForm();
-    const axiosPublic = useAxiosPublic();
+    const axiosSeceure = useAxiosSeceure();
 
     const onSubmit = async (data) => {
         const expInfo = {
@@ -19,7 +19,7 @@ const ManageExperience = () => {
         };
 
         try {
-            const res = await axiosPublic.post('/experience', expInfo);
+            const res = await axiosSeceure.post('/experience', expInfo);
             if (res.data.insertedId) {
                 toast.success("Internship Experience Added!", {
                     duration: 4000,
@@ -39,6 +39,7 @@ const ManageExperience = () => {
             }
         } catch (error) {
             toast.error("Internal Error!");
+            console.error(error);
         }
     };
 
@@ -122,7 +123,7 @@ const ManageExperience = () => {
                             type="submit"
                             className="w-full py-4 bg-black text-white font-black uppercase tracking-widest rounded-xl hover:bg-orange-600 transition-all shadow-lg active:scale-95"
                         >
-                            Add Internship Experience
+                            Add Experience
                         </button>
                     </div>
                 </form>
