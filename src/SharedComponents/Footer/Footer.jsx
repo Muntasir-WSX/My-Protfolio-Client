@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaInstagram, FaFacebookF, FaArrowUp } from 'react-icons/fa';
 import Logo from '../Logo/Logo';
 
@@ -15,75 +15,92 @@ const Footer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // Animation Variants
+    const containerVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                staggerChildren: 0.1,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 15 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.4 }
+        }
+    };
+
     return (
-        <footer className="bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
-            {/* Background Glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-orange-600/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
-
-            <div className="container mx-auto px-6 md:px-12 py-12 md:py-16 relative z-10">
-                
-                {/* --- Grid Layout: Mobile (1), Tablet (2), Desktop (3) --- */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 items-start lg:items-center">
-                    
-                    {/* 1. Brand Section */}
-                    <div className="flex flex-col items-center sm:items-start space-y-4">
-                        <div className="scale-75 md:scale-90 origin-center sm:origin-left transition-transform">
-                            <Logo />
-                        </div>
-                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] leading-relaxed text-center sm:text-left">
-                            Crafting Digital Experiences <br /> 
-                            <span className="text-orange-500">With Innovation & Precision</span>
-                        </p>
-                    </div>
-
-                    {/* 2. Navigation - Tablet e side-e shift hobe */}
-                    <div className="flex flex-col items-center sm:items-end lg:items-center">
-                        <h4 className="text-white font-black uppercase tracking-tighter text-lg mb-6">Navigation</h4>
-                        <ul className="grid grid-cols-2 gap-x-8 gap-y-4 sm:flex sm:flex-wrap sm:justify-end lg:justify-center font-bold uppercase text-[10px] tracking-widest text-gray-400">
-                            <li><Link to="/projects" className="hover:text-orange-500 transition-all">Projects</Link></li>
-                            <li><Link to="/skills" className="hover:text-orange-500 transition-all">Skills</Link></li>
-                            <li><Link to="/education" className="hover:text-orange-500 transition-all">Education</Link></li>
-                            <li><Link to="/contact" className="hover:text-orange-500 transition-all">Contact</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* 3. Socials & Scroll - Tablet e full width ba next line e balanced hobe */}
-                    <div className="flex flex-col items-center lg:items-end space-y-6 sm:col-span-2 lg:col-span-1 border-t border-white/5 pt-10 lg:border-none lg:pt-0">
-                        <div className="flex gap-4">
-                            {socialLinks.map((social) => (
-                                <a 
-                                    key={social.name}
-                                    href={social.link}
-                                    className="w-11 h-11 bg-[#111] border border-white/10 text-gray-400 rounded-full flex items-center justify-center text-lg hover:bg-orange-600 hover:text-white transition-all duration-300"
-                                >
-                                    {social.icon}
-                                </a>
-                            ))}
-                        </div>
-                        
-                        <button 
-                            onClick={scrollToTop}
-                            className="group btn bg-orange-600 hover:bg-orange-700 border-none text-white p-6 h-10 rounded-full font-bold flex items-center gap-2 transition-all duration-300"
-                        >
-                            Back to Top <FaArrowUp className="group-hover:-translate-y-1 transition-transform" />
-                        </button>
-                    </div>
-                </div>
-
-                {/* --- Bottom Bar --- */}
-                <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 order-2 sm:order-1">
-                        © 2026 Muntasir Mahmud. All Rights Reserved.
+        <footer className="bg-white border-t border-gray-100 text-gray-900 py-12 px-6 md:px-12 overflow-hidden">
+            <motion.div 
+                className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+            >
+                {/* Brand & Tagline */}
+                <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start gap-2">
+                    <Logo />
+                    <p className="text-gray-500 text-xs font-medium tracking-wider uppercase mt-1">
+                        Crafting Digital Experiences
                     </p>
-                    
-                    <div className="flex items-center gap-2 px-4 py-2 bg-orange-600/5 border border-orange-600/10 rounded-full order-1 sm:order-2">
-                        <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
-                        <p className="text-[9px] font-bold uppercase tracking-widest text-orange-500">
-                            Available for Freelance
-                        </p>
-                    </div>
-                </div>
-            </div>
+                </motion.div>
+
+                {/* Social Icons (Half Rounded / Rounded-xl) */}
+                <motion.div variants={itemVariants} className="flex items-center gap-3">
+                    {socialLinks.map((social) => (
+                        <motion.a 
+                            key={social.name}
+                            href={social.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={social.name}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-700 hover:text-white hover:bg-emerald-800 hover:border-black transition-all duration-300 text-base shadow-xs"
+                        >
+                            {social.icon}
+                        </motion.a>
+                    ))}
+                </motion.div>
+
+                {/* Back to Top Button */}
+                <motion.button 
+                    variants={itemVariants}
+                    onClick={scrollToTop}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 text-xs uppercase font-semibold tracking-widest text-gray-700 hover:text-black transition-colors cursor-pointer group border border-gray-200 px-5 py-2.5 rounded-xl hover:border-black shadow-xs"
+                >
+                    Top 
+                    <motion.div
+                        animate={{ y: [0, -3, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                    >
+                        <FaArrowUp className="text-emerald-600" />
+                    </motion.div>
+                </motion.button>
+            </motion.div>
+
+            {/* Bottom Copyright */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-gray-500 text-[11px] font-medium tracking-wider uppercase gap-4"
+            >
+                <p>© {new Date().getFullYear()} Muntasir Mahmud. All Rights Reserved.</p>
+            </motion.div>
         </footer>
     );
 };

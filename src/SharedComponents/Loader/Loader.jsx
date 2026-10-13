@@ -4,12 +4,12 @@ import Logo from "../Logo/Logo";
 
 const Loader = () => {
   return (
-    <div className="fixed inset-0 bg-[#0a0a0a] flex flex-col items-center justify-center z-9999">
+    <div className="fixed inset-0 bg-[#0a0a0a] flex flex-col items-center justify-center z-50">
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{
-          opacity: [0.4, 1, 0.4],
-          scale: [0.95, 1, 0.95],
+          opacity: [0.5, 1, 0.5],
+          scale: [0.98, 1, 0.98],
         }}
         transition={{
           duration: 2,
@@ -18,14 +18,24 @@ const Loader = () => {
         }}
         className="relative"
       >
-        <div className="absolute inset-0 bg-orange-600/20 blur-[50px] rounded-full"></div>
-
-        <div className="relative z-10">
-          <Logo />
-        </div>
       </motion.div>
 
-      <div className="mt-8 w-48 h-0.5 bg-white/5 rounded-full overflow-hidden">
+      {/* Animated "Loading..." Text */}
+      <motion.p
+        initial={{ opacity: 0.3 }}
+        animate={{ opacity: [0.3, 1, 0.3] }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="mt-6 text-[10px] uppercase tracking-[0.35em] font-semibold text-emerald-500/80"
+      >
+        Loading...
+      </motion.p>
+
+      {/* Subtle Progress Bar */}
+      <div className="mt-3 w-40 h-[1.5px] bg-white/5 rounded-full overflow-hidden">
         <motion.div
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
@@ -34,7 +44,7 @@ const Loader = () => {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="w-full h-full bg-linear-to-r from-transparent via-orange-600 to-transparent"
+          className="w-full h-full bg-gradient-to-r from-transparent via-emerald-500 to-transparent"
         />
       </div>
     </div>

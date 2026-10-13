@@ -17,13 +17,13 @@ const NavBar = () => {
 
   const links = [
     { name: "Home", to: "home" },
-    { name: "About", to: "about" },
+    { name: "About Me", to: "about" },
     { name: "Skills", to: "skills" },
-    { name: "Projects", to: "projects" },
     { name: "Education", to: "education" },
     { name: "Experience", to: "experience" },
+    { name: "Projects", to: "projects" },
     { name: "Certificate", to: "certificate" },
-    { name: "Contact", to: "contact" },
+    { name: "Contact Me", to: "contact" },
   ];
 
   const handleSignOut = () => {
@@ -35,8 +35,8 @@ const NavBar = () => {
 
   const NavItem = ({ link, mobile = false }) => {
     const baseClass = mobile 
-      ? "block w-full px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] transition-all cursor-pointer text-gray-400 hover:text-orange-500" 
-      : "cursor-pointer transition-all uppercase font-medium tracking-widest text-[11px] text-gray-400 hover:text-orange-500";
+      ? "block w-full px-8 py-4 text-sm font-semibold transition-all cursor-pointer text-gray-300 hover:text-white hover:bg-white/5" 
+      : "cursor-pointer transition-colors text-sm font-semibold text-white/90 hover:text-white px-1 py-2";
 
     if (!isHomePage) {
       return (
@@ -52,7 +52,7 @@ const NavBar = () => {
         smooth={true}
         offset={-100} 
         duration={500}
-        activeClass="active" 
+        activeClass="text-white font-bold border-b-2 border-white" 
         className={baseClass}
         onClick={() => setIsOpen(false)}
       >
@@ -62,26 +62,27 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-[#0a0a0a] border-b border-gray-800 text-white px-6 md:px-12 z-[100] sticky top-0">
-      <div className="container mx-auto flex justify-between items-center h-24">
-        {/* Logo */}
-        <div className="shrink-0 cursor-pointer" onClick={() => navigate("/")}>
+    <nav className="bg-[#0a0a0a] border-b border-white/10 text-white w-full sticky top-0 z-[100]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-24">
+        
+        {/* Logo Section */}
+        <div className="shrink-0 cursor-pointer flex items-center" onClick={() => navigate("/")}>
           <Logo />
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-8">
           <ul className="flex gap-8 items-center">
             {links.map((link) => (
               <li key={link.name}><NavItem link={link} /></li>
             ))}
             
-            {/* Admin Route Fix */}
+            {/* Admin Route */}
             {isAdmin && (
               <li>
                 <RouterLink 
                   to="muntasir-admin" 
-                  className={`text-gray-400 hover:text-orange-500 uppercase font-medium tracking-widest text-[11px] transition-all cursor-pointer ${location.pathname === '/muntasir-admin' ? 'active' : ''}`}
+                  className={`text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer ${location.pathname === '/muntasir-admin' ? 'border-b-2 border-white' : ''}`}
                 >
                   Admin
                 </RouterLink>
@@ -89,23 +90,34 @@ const NavBar = () => {
             )}
           </ul>
 
-          {/* Sign Out Button Fix */}
-          {user && (
+          {/* Action Button (White Filled Button matching Reference Image) */}
+          {user ? (
             <button 
               onClick={handleSignOut} 
-              className="btn btn-sm btn-outline border-orange-600 text-white hover:bg-orange-600 rounded-full px-8 transition-all uppercase text-[10px] font-bold cursor-pointer"
+              className="bg-white text-black font-bold text-sm px-7 py-3 rounded-md hover:bg-gray-200 transition-all cursor-pointer ml-4"
             >
               Sign Out
             </button>
+          ) : (
+            <a 
+              href="/My_Resume.pdf" 
+              download="Muntasir_Resume.pdf"
+              className="bg-white text-black font-bold text-sm px-7 py-3 rounded-md hover:bg-gray-200 transition-all cursor-pointer ml-4 flex items-center justify-center"
+            >
+              Resume
+            </a>
           )}
         </div>
 
         {/* Mobile Hamburger */}
         <div className="lg:hidden">
-          <button onClick={() => setIsOpen(true)} className="flex flex-col gap-1.5 items-end p-2 cursor-pointer relative z-[110]">
-            <span className="w-8 h-0.5 bg-orange-600"></span>
-            <span className="w-6 h-0.5 bg-white"></span>
-            <span className="w-8 h-0.5 bg-orange-600"></span>
+          <button 
+            onClick={() => setIsOpen(true)} 
+            className="flex flex-col gap-1.5 items-end p-2 cursor-pointer relative z-[110]"
+          >
+            <span className="w-7 h-0.5 bg-white"></span>
+            <span className="w-5 h-0.5 bg-white"></span>
+            <span className="w-7 h-0.5 bg-white"></span>
           </button>
         </div>
       </div>
@@ -114,38 +126,47 @@ const NavBar = () => {
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-120">
+            {/* Backdrop */}
             <motion.div 
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
               onClick={() => setIsOpen(false)} 
-              className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer" 
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer" 
             />
 
             <motion.div
-              initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }}
+              initial={{ x: "-100%" }} 
+              animate={{ x: 0 }} 
+              exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute top-0 left-0 h-full w-70 bg-[#0d0d0d] border-r border-gray-800 flex flex-col z-[130]"
+              className="absolute top-0 left-0 h-full w-72 bg-[#0d0d0d] border-r border-white/10 flex flex-col z-[130] p-6"
             >
-             {/* --- Drawer Logo Section --- */}
-<div className="px-6 py-6 md:px-8 md:py-8 border-b border-gray-900 flex justify-start items-center">
-    <div className="scale-75 origin-left md:scale-100 transition-transform duration-300">
-        <Logo />
-    </div>
-</div>
+              {/* Drawer Header */}
+              <div className="pb-6 border-b border-white/10 flex justify-between items-center">
+                <Logo />
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="text-white text-xl font-bold p-2 hover:text-gray-400"
+                >
+                  ✕
+                </button>
+              </div>
 
-              <ul className="flex flex-col mt-4 overflow-y-auto">
+              {/* Mobile Navigation Links */}
+              <ul className="flex flex-col gap-1 mt-6 overflow-y-auto">
                 {links.map((link) => (
                   <li key={link.name} className="w-full">
                     <NavItem link={link} mobile={true} />
                   </li>
                 ))}
                 
-                {/* Admin in Mobile Drawer */}
                 {isAdmin && (
                   <li>
                     <RouterLink 
                       to="muntasir-admin" 
                       onClick={() => setIsOpen(false)}
-                      className={`block w-full px-8 py-4 text-[13px] font-bold uppercase tracking-[0.2em] transition-all text-gray-400 hover:text-orange-500 ${location.pathname === '/muntasir-admin' ? 'active' : ''}`}
+                      className="block w-full px-8 py-4 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5"
                     >
                       Admin
                     </RouterLink>
@@ -153,15 +174,23 @@ const NavBar = () => {
                 )}
               </ul>
 
-              {/* Mobile Sign Out */}
-              <div className="mt-auto p-8 border-t border-gray-900">
-                {user && (
+              {/* Mobile Action Button */}
+              <div className="mt-auto pt-6 border-t border-white/10">
+                {user ? (
                   <button 
                     onClick={handleSignOut} 
-                    className="w-full py-4 bg-orange-600/10 border border-orange-600 text-orange-600 font-bold uppercase text-[11px] tracking-widest rounded-xl hover:bg-orange-600 hover:text-white transition-all"
+                    className="w-full py-3.5 bg-white text-black font-bold text-sm rounded-md hover:bg-gray-200 transition-all"
                   >
                     Sign Out
                   </button>
+                ) : (
+                  <a 
+                    href="/My_Resume.pdf" 
+                    download="Muntasir_Resume.pdf"
+                    className="w-full py-3.5 bg-white text-black font-bold text-sm rounded-md hover:bg-gray-200 transition-all block text-center"
+                  >
+                    Resume
+                  </a>
                 )}
               </div>
             </motion.div>
