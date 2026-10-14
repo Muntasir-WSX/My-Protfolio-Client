@@ -35,8 +35,8 @@ const NavBar = () => {
 
   const NavItem = ({ link, mobile = false }) => {
     const baseClass = mobile 
-      ? "block w-full px-8 py-4 text-sm font-semibold transition-all cursor-pointer text-gray-300 hover:text-white hover:bg-white/5" 
-      : "cursor-pointer transition-colors text-sm font-semibold text-white/90 hover:text-white px-1 py-2";
+      ? "block w-full px-8 py-4 text-sm font-semibold transition-all cursor-pointer text-gray-700 hover:text-emerald-600 hover:bg-gray-50" 
+      : "cursor-pointer transition-colors text-sm font-semibold text-gray-700 hover:text-emerald-600 px-1 py-2";
 
     if (!isHomePage) {
       return (
@@ -52,7 +52,7 @@ const NavBar = () => {
         smooth={true}
         offset={-100} 
         duration={500}
-        activeClass="text-white font-bold border-b-2 border-white" 
+        activeClass="text-emerald-600 font-bold border-b-2 border-emerald-600" 
         className={baseClass}
         onClick={() => setIsOpen(false)}
       >
@@ -62,7 +62,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-[#0a0a0a] border-b border-white/10 text-white w-full sticky top-0 z-[100]">
+    <nav className="bg-white border-b border-gray-100 text-gray-900 w-full sticky top-0 z-[100] shadow-xs">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-24">
         
         {/* Logo Section */}
@@ -82,7 +82,7 @@ const NavBar = () => {
               <li>
                 <RouterLink 
                   to="muntasir-admin" 
-                  className={`text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer ${location.pathname === '/muntasir-admin' ? 'border-b-2 border-white' : ''}`}
+                  className={`text-sm font-semibold text-gray-700 hover:text-emerald-600 transition-colors cursor-pointer ${location.pathname === '/muntasir-admin' ? 'border-b-2 border-emerald-600 text-emerald-600 font-bold' : ''}`}
                 >
                   Admin
                 </RouterLink>
@@ -90,11 +90,11 @@ const NavBar = () => {
             )}
           </ul>
 
-          {/* Action Button (White Filled Button matching Reference Image) */}
+          {/* Action Button */}
           {user ? (
             <button 
               onClick={handleSignOut} 
-              className="bg-white text-black font-bold text-sm px-7 py-3 rounded-md hover:bg-gray-200 transition-all cursor-pointer ml-4"
+              className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer ml-4 shadow-xs"
             >
               Sign Out
             </button>
@@ -102,7 +102,7 @@ const NavBar = () => {
             <a 
               href="/My_Resume.pdf" 
               download="Muntasir_Resume.pdf"
-              className="bg-white text-black font-bold text-sm px-7 py-3 rounded-md hover:bg-gray-200 transition-all cursor-pointer ml-4 flex items-center justify-center"
+              className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer ml-4 flex items-center justify-center shadow-xs"
             >
               Resume
             </a>
@@ -115,9 +115,9 @@ const NavBar = () => {
             onClick={() => setIsOpen(true)} 
             className="flex flex-col gap-1.5 items-end p-2 cursor-pointer relative z-[110]"
           >
-            <span className="w-7 h-0.5 bg-white"></span>
-            <span className="w-5 h-0.5 bg-white"></span>
-            <span className="w-7 h-0.5 bg-white"></span>
+            <span className="w-7 h-0.5 bg-gray-900"></span>
+            <span className="w-5 h-0.5 bg-emerald-600"></span>
+            <span className="w-7 h-0.5 bg-gray-900"></span>
           </button>
         </div>
       </div>
@@ -132,7 +132,7 @@ const NavBar = () => {
               animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }} 
               onClick={() => setIsOpen(false)} 
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer" 
+              className="absolute inset-0 bg-black/40 backdrop-blur-xs cursor-pointer" 
             />
 
             <motion.div
@@ -140,14 +140,14 @@ const NavBar = () => {
               animate={{ x: 0 }} 
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute top-0 left-0 h-full w-72 bg-[#0d0d0d] border-r border-white/10 flex flex-col z-[130] p-6"
+              className="absolute top-0 left-0 h-full w-72 bg-white border-r border-gray-100 flex flex-col z-[130] p-6 shadow-2xl"
             >
               {/* Drawer Header */}
-              <div className="pb-6 border-b border-white/10 flex justify-between items-center">
+              <div className="pb-6 border-b border-gray-100 flex justify-between items-center">
                 <Logo />
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="text-white text-xl font-bold p-2 hover:text-gray-400"
+                  className="text-gray-500 text-xl font-bold p-2 hover:text-black transition-colors"
                 >
                   ✕
                 </button>
@@ -166,7 +166,7 @@ const NavBar = () => {
                     <RouterLink 
                       to="muntasir-admin" 
                       onClick={() => setIsOpen(false)}
-                      className="block w-full px-8 py-4 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5"
+                      className="block w-full px-8 py-4 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-gray-50"
                     >
                       Admin
                     </RouterLink>
@@ -175,11 +175,11 @@ const NavBar = () => {
               </ul>
 
               {/* Mobile Action Button */}
-              <div className="mt-auto pt-6 border-t border-white/10">
+              <div className="mt-auto pt-6 border-t border-gray-100">
                 {user ? (
                   <button 
                     onClick={handleSignOut} 
-                    className="w-full py-3.5 bg-white text-black font-bold text-sm rounded-md hover:bg-gray-200 transition-all"
+                    className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all"
                   >
                     Sign Out
                   </button>
@@ -187,7 +187,7 @@ const NavBar = () => {
                   <a 
                     href="/My_Resume.pdf" 
                     download="Muntasir_Resume.pdf"
-                    className="w-full py-3.5 bg-white text-black font-bold text-sm rounded-md hover:bg-gray-200 transition-all block text-center"
+                    className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all block text-center"
                   >
                     Resume
                   </a>
