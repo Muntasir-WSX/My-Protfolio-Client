@@ -83,14 +83,14 @@ const Banner = () => {
                             variants={itemVariants}
                             className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2"
                         >
-                            <a 
-                                href="/CV_Muntasir.pdf" 
-                                download="CV_Muntasir.pdf" 
-                                className="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 shadow-emerald-600/20 group"
-                            >
-                                Download Resume
-                                <FiArrowUpRight className="text-lg group-hover:rotate-45 transition-transform" />
-                            </a>
+                                                        <a
+                                                            href="/CV_Muntasir.pdf"
+                                                            download="CV_Muntasir.pdf"
+                                                            className="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 shadow-emerald-600/20 group cursor-pointer"
+                                                        >
+                                                            Download Resume
+                                                            <FiArrowUpRight className="text-lg group-hover:rotate-45 transition-transform" />
+                                                        </a>
                             
                             <ScrollLink 
                                 to="contact" 

@@ -91,22 +91,23 @@ const NavBar = () => {
           </ul>
 
           {/* Action Button */}
-          {user ? (
-            <button 
-              onClick={handleSignOut} 
-              className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer ml-4 shadow-xs"
-            >
-              Sign Out
-            </button>
-          ) : (
-            <a 
-              href="/CV_Muntasir.pdf" 
+          <div className="flex items-center gap-3 ml-4">
+            <a
+              href="/CV_Muntasir.pdf"
               download="CV_Muntasir.pdf"
-              className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer ml-4 flex items-center justify-center shadow-xs"
+              className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer flex items-center justify-center shadow-xs"
             >
               Resume
             </a>
-          )}
+            {user && (
+              <button
+                onClick={handleSignOut}
+                className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer shadow-xs"
+              >
+                Sign Out
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Mobile Hamburger */}
@@ -176,22 +177,23 @@ const NavBar = () => {
 
               {/* Mobile Action Button */}
               <div className="mt-auto pt-6 border-t border-gray-100">
-                {user ? (
-                  <button 
-                    onClick={handleSignOut} 
-                    className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all"
-                  >
-                    Sign Out
-                  </button>
-                ) : (
-                  <a 
-                    href="/CV_Muntasir.pdf" 
+                <div className="flex flex-col gap-3">
+                  <a
+                    href="/CV_Muntasir.pdf"
                     download="CV_Muntasir.pdf"
                     className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all block text-center"
                   >
                     Resume
                   </a>
-                )}
+                  {user && (
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all"
+                    >
+                      Sign Out
+                    </button>
+                  )}
+                </div>
               </div>
             </motion.div>
           </div>

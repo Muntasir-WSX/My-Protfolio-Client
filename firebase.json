@@ -6,6 +6,17 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "headers": [
+      {
+        "source": "/CV_Muntasir.pdf",
+        "headers": [
+          {
+            "key": "Content-Disposition",
+            "value": "attachment; filename=\"CV_Muntasir.pdf\""
+          }
+        ]
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
