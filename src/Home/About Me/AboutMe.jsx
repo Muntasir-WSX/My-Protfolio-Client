@@ -6,107 +6,62 @@ const AboutMe = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
   return (
-    <section className="py-24 bg-[#0a0a0a] px-6 md:px-16 overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] -translate-y-1/2 z-0"></div>
-
+    <section id="about" className="py-20 bg-white text-gray-900 px-6 md:px-16 overflow-hidden border-t border-gray-100">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="max-w-7xl mx-auto relative z-10"
+        className="max-w-5xl mx-auto"
       >
-        {/* --- Updated Header Section (Left Aligned) --- */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-16 text-center lg:text-left"
-        >
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-            <span className="w-12 h-0.5 bg-orange-600"></span>
-            <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
-              Know More
-            </h2>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-            About{" "}
-            <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
-              Me
-            </span>
-          </h1>
+        {/* Header Section */}
+        <motion.div variants={itemVariants} className="mb-10 text-center lg:text-left">
+          <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
+            Get To Know Me
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
+            About Me
+          </h2>
         </motion.div>
 
-        {/* Content Container */}
+        {/* Minimal Bio Card */}
         <motion.div
           variants={itemVariants}
-          className="bg-[#111111]/50 border border-white/10 p-8 md:p-12 lg:p-16 rounded-3xl backdrop-blur-sm shadow-2xl relative overflow-hidden group"
+          className="bg-gray-50/60 border border-gray-200/80 p-8 md:p-12 rounded-2xl shadow-xs space-y-6 text-gray-700 text-base md:text-lg leading-relaxed font-normal"
         >
-          {/* Background Glow inside Card */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-orange-600/10 rounded-full blur-[100px] group-hover:bg-orange-600/20 transition-all duration-700"></div>
+          <p>
+            Hello! I am <span className="text-gray-900 font-bold">Muntasir Mahmud</span>, a 
+            passionate <span className="text-emerald-700 font-bold">Full-Stack Developer</span> and a Computer Science & Engineering student at 
+            <span className="text-gray-900 font-semibold"> International Islamic University Chittagong (IIUC)</span>.
+          </p>
 
-          <div className="text-gray-300 text-lg md:text-2xl lg:text-3xl leading-[1.6] font-light tracking-tight relative z-10 space-y-8">
-            <p>
-              I am <span className="text-white font-bold">Muntasir Mahmud</span>
-              , a Full Stack Developer driven by the art of crafting
-              high-performance and{" "}
-              <span className="text-orange-500 font-semibold italic">
-                visually stunning
-              </span>{" "}
-              digital products. My journey is defined by a relentless pursuit of
-              turning complex problems into elegant, scalable solutions.
-            </p>
+          <p>
+            I specialize in engineering full-stack web applications using <span className="text-gray-900 font-bold">Next.js</span>, <span className="text-gray-900 font-bold">TypeScript</span>, and <span className="text-gray-900 font-bold">PostgreSQL</span> with <span className="text-emerald-700 font-bold">Prisma ORM</span>. To deliver high-performance and scalable systems, I integrate <span className="text-gray-900 font-semibold">Redis</span> for caching and leverage <span className="text-gray-900 font-semibold">Docker</span> for seamless containerization and deployment.
+          </p>
 
-            <p>
-              With a strong foundation in{" "}
-              <span className="text-white font-medium underline decoration-orange-600/40 underline-offset-8">
-                MERN Stack
-              </span>{" "}
-              and modern architectures, I specialize in building ecosystems
-              where seamless{" "}
-              <span className="text-white font-medium">User Experience</span>{" "}
-              meets robust backend logic. I don't just write code; I architect
-              experiences.
-            </p>
+          <p>
+            While my web development foundation was built upon the <span className="text-gray-800 font-medium">MERN stack</span> (MongoDB, Express.js, React, Node.js), I have evolved into architecting production-ready backend workflows and optimized databases that meet modern industry standards.
+          </p>
 
-            <p className="text-base md:text-xl lg:text-2xl text-gray-400 border-l-2 border-orange-600 pl-6 py-2 italic">
-              "Beyond the terminal, I’m a traveler seeking new perspectives, a
-              strategist on the virtual pitch of{" "}
-              <span className="text-white">FIFA</span>, and an explorer in the
-              vast world of{" "}
-              <span className="text-white">Red Dead Redemption 2</span>. I
-              believe a great developer needs the strategy of a gamer and the
-              soul of an explorer."
-            </p>
-          </div>
+          <p className="border-l-2 border-emerald-600 pl-4 py-1 text-gray-600 italic text-sm md:text-base">
+            "Outside of coding, I enjoy exploring nature, following European football, and gaming."
+          </p>
         </motion.div>
       </motion.div>
-
-      {/* Stroke Text Style */}
-      <style jsx="true">{`
-        .stroke-text-about {
-          -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
-        }
-        @media (max-width: 768px) {
-          .stroke-text-about {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-          }
-        }
-      `}</style>
     </section>
   );
 };

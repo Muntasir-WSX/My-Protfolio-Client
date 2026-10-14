@@ -1,35 +1,65 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaFire, FaPhp, FaWordpress, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaFire, FaHtml5, FaCss3Alt, FaDocker } from 'react-icons/fa';
 import { 
     SiTailwindcss, SiDaisyui, SiRadixui, SiShadcnui, 
     SiReactrouter, SiExpress, SiMongodb, SiAxios, 
     SiNextdotjs, SiSupabase, SiTypescript, SiJavascript,
-    SiReactquery
+    SiReactquery, SiPrisma, SiPostgresql, SiRedis,
+    SiZod, SiThreedotjs, SiLangchain, SiOllama, SiVite, SiFramer,
+    SiPostman,
+    SiBeekeeperstudio
 } from 'react-icons/si';
 
 const MyTechnologies = () => {
-    const allTech = [
-        { name: 'HTML5', icon: <FaHtml5 className="text-[#E34F26]" /> },
-        { name: 'CSS3', icon: <FaCss3Alt className="text-[#1572B6]" /> },
-        { name: 'JavaScript', icon: <SiJavascript className="text-[#F7DF1E]" /> },
-        { name: 'React', icon: <FaReact className="text-[#61DAFB]" /> },
-        { name: 'Next.js', icon: <SiNextdotjs className="text-white" /> },
-        { name: 'TypeScript', icon: <SiTypescript className="text-[#3178C6]" /> },
-        { name: 'Node.js', icon: <FaNodeJs className="text-[#339933]" /> },
-        { name: 'Express.js', icon: <SiExpress className="text-white" /> },
-        { name: 'MongoDB', icon: <SiMongodb className="text-[#47A248]" /> },
-        { name: 'Tailwind', icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-        { name: 'React Router', icon: <SiReactrouter className="text-[#CA4245]" /> },
-        { name: 'TanStack Query', icon: <SiReactquery className="text-[#f44150]" />  }, 
-        { name: 'Firebase', icon: <FaFire className="text-[#FFCA28]" /> },
-        { name: 'Radix UI', icon: <SiRadixui className="text-[#FFCA28]" /> },
-        { name: 'Supabase', icon: <SiSupabase className="text-[#3ECF8E]" /> },
-        { name: 'Shadcn UI', icon: <SiShadcnui className="text-white" /> },
-        { name: 'DaisyUI', icon: <SiDaisyui className="text-[#ebd727]" /> },
-        { name: 'Axios', icon: <SiAxios className="text-[#5A29E4]" /> },
-        { name: 'WordPress', icon: <FaWordpress className="text-[#21759B]" /> },
-        { name: 'PHP', icon: <FaPhp className="text-[#21759B]" /> },
+    // Categorized Skill Sets
+    const skillCategories = [
+        {
+            title: "Frontend Engineering",
+            skills: [
+                { name: 'React.js', icon: <FaReact className="text-[#61DAFB]" /> },
+                { name: 'Next.js', icon: <SiNextdotjs className="text-gray-900" /> },
+                { name: 'TypeScript', icon: <SiTypescript className="text-[#3178C6]" /> },
+                { name: 'JavaScript', icon: <SiJavascript className="text-[#F7DF1E]" /> },
+                { name: 'TanStack Query', icon: <SiReactquery className="text-[#FF4154]" /> },
+                { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-[#06B6D4]" /> },
+                { name: 'Vite', icon: <SiVite className="text-[#646CFF]" /> },
+                { name: 'Three.js', icon: <SiThreedotjs className="text-gray-900" /> },
+                { name: 'Framer Motion', icon: <SiFramer className="text-[#0055FF]" /> },
+                { name: 'Shadcn UI', icon: <SiShadcnui className="text-gray-900" /> },
+                { name: 'DaisyUI', icon: <SiDaisyui className="text-[#1AD1A5]" /> },
+                { name: 'Radix UI', icon: <SiRadixui className="text-[#161618]" /> },
+                { name: 'React Router', icon: <SiReactrouter className="text-[#CA4245]" /> },
+                { name: 'HTML5', icon: <FaHtml5 className="text-[#E34F26]" /> },
+                { name: 'CSS3', icon: <FaCss3Alt className="text-[#1572B6]" /> },
+            ]
+        },
+        {
+            title: "Backend & AI Systems",
+            skills: [
+                { name: 'Node.js', icon: <FaNodeJs className="text-[#339933]" /> },
+                { name: 'Express.js', icon: <SiExpress className="text-gray-900" /> },
+                { name: 'RAG & AI Agents', icon: <SiLangchain className="text-[#1C3C3C]" /> },
+                { name: 'Ollama (Local LLM)', icon: <SiOllama className="text-gray-900" /> },
+                { name: 'Redis Caching', icon: <SiRedis className="text-[#DC382D]" /> },
+                { name: 'Zod Validation', icon: <SiZod className="text-[#3E67B1]" /> },
+                { name: 'Docker', icon: <FaDocker className="text-[#2496ED]" /> },
+                { name: 'Firebase Auth', icon: <FaFire className="text-[#FFCA28]" /> },
+                { name: 'Supabase', icon: <SiSupabase className="text-[#3ECF8E]" /> },
+                { name: 'Axios API', icon: <SiAxios className="text-[#5A29E4]" /> },
+            ]
+        },
+        {
+            title: "Database & ORM",
+            skills: [
+                { name: 'PostgreSQL', icon: <SiPostgresql className="text-[#4169E1]" /> },
+                { name: 'Prisma ORM', icon: <SiPrisma className="text-[#2D3748]" /> },
+                { name: 'MongoDB', icon: <SiMongodb className="text-[#47A248]" /> },
+                { name: 'Postman', icon: <SiPostman className="text-[#FFCA28]" /> },
+                { name: " BeeKeeper Studio", icon: <SiBeekeeperstudio className="text-yellow-500" /> }
+
+            ]
+        }
     ];
 
     const containerVariants = {
@@ -41,19 +71,16 @@ const MyTechnologies = () => {
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, scale: 0.8 },
+        hidden: { opacity: 0, y: 12 },
         visible: { 
             opacity: 1, 
-            scale: 1,
-            transition: { duration: 0.5 } 
+            y: 0,
+            transition: { duration: 0.3, ease: "easeOut" } 
         }
     };
 
     return (
-        <section className="py-20 bg-[#0a0a0a] px-4 md:px-16 relative overflow-hidden">
-             {/* Background Glow */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-600/[0.02] rounded-full blur-[120px] pointer-events-none"></div>
-
+        <section id="skills" className="py-20 bg-white border-t border-gray-100 px-6 md:px-12 text-gray-900 relative overflow-hidden">
             <div className="max-w-7xl mx-auto relative z-10">
                 
                 {/* Header */}
@@ -61,65 +88,51 @@ const MyTechnologies = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-12 md:mb-20 text-center lg:text-left"
+                    className="mb-12 text-center lg:text-left"
                 >
-                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                        <span className="w-10 md:w-12 h-0.5 bg-orange-600"></span>
-                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase">
-                            Skill Set
-                        </h2>
-                    </div>
-                    <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">Stack</span>
-                    </h1>
+                    <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
+                        Technical Expertise
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
+                        Skills & Technologies
+                    </h2>
                 </motion.div>
 
-                {/* --- Grid Section --- */}
-                <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
-                >
-                    {allTech.map((tech) => (
-                        <motion.div
-                            key={tech.name}
-                            variants={itemVariants}
-                            // 'group' class ta hover handle korar jonno use hobe
-                            className="group bg-[#111] border border-white/5 p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-orange-600/30 transition-all duration-500 relative"
-                        >
-                            {/* --- ICON SPINNER ON HOVER --- */}
+                {/* 3 Column Grid Container */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    {skillCategories.map((category) => (
+                        <div key={category.title} className="bg-gray-50/50 border border-gray-200/80 p-6 rounded-2xl space-y-6">
+                            <h3 className="text-lg font-bold text-gray-900 border-l-4 border-emerald-600 pl-3">
+                                {category.title}
+                            </h3>
+
                             <motion.div 
-                                whileHover={{ rotate: 360 }}
-                                transition={{ duration: 0.8, ease: "easeInOut" }}
-                                className="text-4xl md:text-5xl z-10 origin-center"
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 gap-3"
                             >
-                                {tech.icon}
+                                {category.skills.map((tech) => (
+                                    <motion.div
+                                        key={tech.name}
+                                        variants={itemVariants}
+                                        className="group bg-white border border-gray-200/70 p-3.5 rounded-xl flex items-center gap-3 hover:border-emerald-600/50 hover:shadow-xs transition-all duration-300"
+                                    >
+                                        <div className="text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110">
+                                            {tech.icon}
+                                        </div>
+
+                                        <span className="text-gray-700 text-xs font-semibold group-hover:text-emerald-700 transition-colors truncate">
+                                            {tech.name}
+                                        </span>
+                                    </motion.div>
+                                ))}
                             </motion.div>
-
-                            <span className="text-gray-500 text-[10px] font-bold uppercase tracking-widest group-hover:text-white transition-colors z-10 text-center">
-                                {tech.name}
-                            </span>
-                            
-                            {/* Hover Subtle Glow */}
-                            <div className="absolute inset-0 bg-orange-600 opacity-0 group-hover:opacity-[0.03] transition-opacity rounded-2xl"></div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
-
-            <style jsx="true">{`
-                .stroke-text {
-                    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-                }
-                @media (min-width: 768px) {
-                    .stroke-text { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4); }
-                }
-                .stroke-text:hover {
-                    -webkit-text-stroke: 1.5px #ea580c;
-                }
-            `}</style>
         </section>
     );
 };

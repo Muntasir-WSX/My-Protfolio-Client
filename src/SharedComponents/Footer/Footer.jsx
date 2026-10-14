@@ -72,23 +72,6 @@ const Footer = () => {
                         </motion.a>
                     ))}
                 </motion.div>
-
-                {/* Back to Top Button */}
-                <motion.button 
-                    variants={itemVariants}
-                    onClick={scrollToTop}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-xs uppercase font-semibold tracking-widest text-gray-700 hover:text-black transition-colors cursor-pointer group border border-gray-200 px-5 py-2.5 rounded-xl hover:border-black shadow-xs"
-                >
-                    Top 
-                    <motion.div
-                        animate={{ y: [0, -3, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                    >
-                        <FaArrowUp className="text-emerald-600" />
-                    </motion.div>
-                </motion.button>
             </motion.div>
 
             {/* Bottom Copyright */}

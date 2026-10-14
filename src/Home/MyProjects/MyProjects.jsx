@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const MyProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -16,8 +16,7 @@ const MyProjects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, 
-        delayChildren: 0.1
+        staggerChildren: 0.1,
       }
     }
   };
@@ -25,49 +24,39 @@ const MyProjects = () => {
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      y: 40, 
-      filter: "blur(10px)" 
+      y: 20
     },
     visible: { 
       opacity: 1, 
       y: 0, 
-      filter: "blur(0px)",
       transition: { 
-        duration: 0.8, 
-        ease: [0.22, 1, 0.36, 1] 
+        duration: 0.4, 
+        ease: "easeOut" 
       } 
     }
   };
 
   return (
-    <section className="relative bg-[#0a0a0a] py-24 px-6 md:px-16 overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] z-0"></div>
-
+    <section id="projects" className="relative bg-white text-gray-900 py-20 px-6 md:px-12 border-t border-gray-100">
       <div className="max-w-7xl mx-auto relative z-10">
+        
         {/* --- Header Section --- */}
         <motion.div
-          initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16 text-center lg:text-left"
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center lg:text-left"
         >
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-            <span className="w-12 h-0.5 bg-orange-600"></span>
-            <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
-              My Works
-            </h2>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-            Featured{" "}
-            <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
-              projects
-            </span>
-          </h1>
+          <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
+            My Works
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
+            Featured Projects
+          </h2>
         </motion.div>
 
-        {/* --- Grid: Show All Projects Directly --- */}
+        {/* --- Grid Section --- */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -75,43 +64,28 @@ const MyProjects = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          <AnimatePresence mode="popLayout">
-            {/* Ekhane projects.slice() soriye shudhu projects map kora hoyeche */}
-            {projects.map((project) => (
-              <motion.div
-                key={project._id}
-                layout 
-                variants={cardVariants}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {projects.map((project) => (
+            <motion.div
+              key={project._id}
+              variants={cardVariants}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Empty State */}
         {projects.length === 0 && (
-          <div className="text-center py-20 border border-dashed border-gray-800 rounded-3xl">
-            <p className="text-gray-500 font-light tracking-widest uppercase">
+          <div className="text-center py-20 border border-dashed border-gray-200 rounded-2xl bg-gray-50/50">
+            <p className="text-gray-500 font-medium tracking-wide text-sm">
               No projects uploaded yet!
+            </p>
+            <p className="text-gray-400 text-xs mt-2">
+              Check back later for updates.
             </p>
           </div>
         )}
       </div>
-
-      <style jsx="true">{`
-        .stroke-text-proj {
-          -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
-        }
-        .stroke-text:hover {
-          -webkit-text-stroke: 1.5px #ea580c;
-        }
-        @media (max-width: 768px) {
-          .stroke-text-proj {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-          }
-        }
-      `}</style>
     </section>
   );
 };

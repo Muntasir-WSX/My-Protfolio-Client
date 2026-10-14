@@ -23,7 +23,7 @@ const Logo = () => {
                         animate={{ opacity: 1, y: 0 }}
                         whileHover={{ scale: 1.03 }}
                         transition={{ duration: 0.2 }}
-                        className="font-lobster text-3xl md:text-4xl text-emerald-800 tracking-wide transition-colors duration-300 flex items-center"
+                        className="font-lobster text-3xl md:text-4xl text-emerald-600 hover:text-emerald-700 cursor-pointer tracking-wide transition-colors duration-300 flex items-center"
                     >
                         Muntasir <span className="text-black ml-1.5">M.</span>
                     </motion.h1>
