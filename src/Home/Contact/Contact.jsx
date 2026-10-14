@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
@@ -8,8 +8,10 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const axiosPublic = useAxiosPublic();
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = async (data) => {
+        setLoading(true);
         const contactMessage = {
             name: data.name,
             email: data.email,
@@ -20,76 +22,76 @@ const Contact = () => {
         };
 
         try {
+            // Post to backend API which triggers Nodemailer / EmailJS
             const res = await axiosPublic.post('/messages', contactMessage);
-            if (res.data.insertedId) {
+            if (res.data.insertedId || res.status === 200) {
                 toast.success("Message Sent! I'll reach out soon.");
                 reset();
             }
         } catch (error) {
-            toast.error("Something went wrong. Try again!");
+            toast.error("Failed to send message. Please try again!");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        // Section padding and overflow matched with MyCertificates
-        <section id="contact" className="bg-[#0a0a0a] py-20 px-6 md:px-16 relative overflow-hidden">
-            {/* Background Glow - Matched position logic */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px]"></div>
-
-            <div className="container mx-auto max-w-7xl relative z-10">
+        <section id="contact" className="bg-white border-t border-gray-100 py-16 md:py-24 px-4 md:px-16 text-gray-900 relative overflow-hidden">
+            <div className="container mx-auto max-w-5xl relative z-10">
                 
-                {/* Header Section - Exactly matched with MyCertificates layout */}
+                {/* Header Section */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 text-center lg:text-left"
+                    transition={{ duration: 0.5 }}
+                    className="mb-12 text-center lg:text-left"
                 >
-                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                        <span className="w-12 h-0.5 bg-orange-600"></span>
-                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">Get In Touch</h2>
-                    </div>
-                    <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        Let's <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">Connect</span>
-                    </h1>
+                    <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
+                        Get In Touch
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
+                        Let's Connect
+                    </h2>
                 </motion.div>
 
                 {/* Main Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                     
-                    {/* Left Side: Info - Taking 5 columns on desktop */}
+                    {/* Left Side: Contact Info */}
                     <motion.div 
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:col-span-5 space-y-10"
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="lg:col-span-5 space-y-8"
                     >
-                        <p className="text-gray-400 text-lg max-w-md leading-relaxed">
-                            Have a project in mind or just want to say hi? My inbox is always open.
+                        <p className="text-gray-600 text-base md:text-lg leading-relaxed font-normal">
+                            Have a project in mind, a opportunity to discuss, or just want to say hi? Feel free to reach out directly.
                         </p>
 
-                        <div className="space-y-6">
+                        <div className="space-y-5">
                             {/* Email Card */}
-                            <div className="flex items-center gap-6 group">
-                                <div className="p-4 bg-[#111] border border-gray-800 rounded-2xl text-orange-500 group-hover:border-orange-600 transition-all shadow-lg">
-                                    <FiMail size={24} />
+                            <div className="flex items-center gap-4 p-4 bg-gray-50/70 border border-gray-200/80 rounded-2xl">
+                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                                    <FiMail size={20} />
                                 </div>
                                 <div>
-                                    <p className="text-gray-500 text-xs uppercase font-bold tracking-widest mb-1">Email Me</p>
-                                    <a href="mailto:alimuntasir2001@gmail.com" className="text-white text-lg font-medium hover:text-orange-500 transition-colors">
+                                    <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Email Me</p>
+                                    <a href="mailto:alimuntasir2001@gmail.com" className="text-gray-900 font-semibold text-sm md:text-base hover:text-emerald-600 transition-colors">
                                         alimuntasir2001@gmail.com
                                     </a>
                                 </div>
                             </div>
 
                             {/* Phone Card */}
-                            <div className="flex items-center gap-6 group">
-                                <div className="p-4 bg-[#111] border border-gray-800 rounded-2xl text-orange-500 group-hover:border-orange-600 transition-all shadow-lg">
-                                    <FiPhone size={24} />
+                            <div className="flex items-center gap-4 p-4 bg-gray-50/70 border border-gray-200/80 rounded-2xl">
+                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                                    <FiPhone size={20} />
                                 </div>
                                 <div>
-                                    <p className="text-gray-500 text-xs uppercase font-bold tracking-widest mb-1">Call Me</p>
-                                    <a href="tel:+8801849643758" className="text-white text-lg font-medium hover:text-orange-500 transition-colors">
+                                    <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Call Me</p>
+                                    <a href="tel:+8801849643758" className="text-gray-900 font-semibold text-sm md:text-base hover:text-emerald-600 transition-colors">
                                         +880 1849643758
                                     </a>
                                 </div>
@@ -97,57 +99,68 @@ const Contact = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right Side: Form - Taking 7 columns on desktop */}
+                    {/* Right Side: Form */}
                     <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:col-span-7 bg-[#111]/50 border border-gray-800 p-6 md:p-10 rounded-3xl backdrop-blur-sm hover:border-orange-600/30 transition-all duration-500"
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="lg:col-span-7 bg-gray-50/60 border border-gray-200/80 p-6 md:p-8 rounded-2xl"
                     >
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                            {/* Name Input */}
                             <div className="relative">
-                                <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                                <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                                 <input 
                                     {...register("name", { required: true })}
-                                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 text-sm"
-                                    placeholder="YOUR NAME"
+                                    className="w-full bg-white border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 focus:border-emerald-600 outline-none transition-colors text-sm placeholder:text-gray-400"
+                                    placeholder="Your Full Name"
                                 />
+                                {errors.name && <span className="text-xs text-red-500 mt-1 block">Name is required</span>}
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {/* Email & Phone */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="relative">
-                                    <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                                    <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                                     <input 
+                                        type="email"
                                         {...register("email", { required: true })}
-                                        className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 text-sm"
-                                        placeholder="EMAIL ADDRESS"
+                                        className="w-full bg-white border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 focus:border-emerald-600 outline-none transition-colors text-sm placeholder:text-gray-400"
+                                        placeholder="Email Address"
                                     />
+                                    {errors.email && <span className="text-xs text-red-500 mt-1 block">Email is required</span>}
                                 </div>
                                 <div className="relative">
-                                    <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                                    <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                                     <input 
                                         {...register("phone", { required: true })}
-                                        className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 text-sm"
-                                        placeholder="PHONE NUMBER"
+                                        className="w-full bg-white border border-gray-200 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 focus:border-emerald-600 outline-none transition-colors text-sm placeholder:text-gray-400"
+                                        placeholder="Phone Number"
                                     />
                                 </div>
                             </div>
 
+                            {/* Message Textarea */}
                             <div className="relative">
-                                <FiMessageSquare className="absolute left-4 top-6 text-gray-500" />
+                                <FiMessageSquare className="absolute left-4 top-4 text-gray-400" />
                                 <textarea 
                                     {...register("message", { required: true })}
-                                    rows="5"
-                                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-12 py-4 text-white focus:border-orange-600 outline-none transition-all placeholder:text-gray-600 resize-none text-sm"
-                                    placeholder="HOW CAN I HELP YOU?"
+                                    rows="4"
+                                    className="w-full bg-white border border-gray-200 rounded-xl pl-11 pr-4 py-3 text-gray-900 focus:border-emerald-600 outline-none transition-colors resize-none text-sm placeholder:text-gray-400"
+                                    placeholder="How can I help you?"
                                 ></textarea>
+                                {errors.message && <span className="text-xs text-red-500 mt-1 block">Message is required</span>}
                             </div>
 
+                            {/* Submit Button (Half Rounded) */}
                             <button 
                                 type="submit"
-                                className="w-full group btn bg-orange-600 hover:bg-orange-700 border-none text-white p-2 h-12 rounded-full font-bold flex items-center gap-2 transition-all duration-300"
+                                disabled={loading}
+                                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm uppercase tracking-wider cursor-pointer shadow-xs disabled:opacity-70"
                             >
-                                Send Message <FiSend />
+                                {loading ? "Sending..." : "Send Message"}
+                                <FiSend />
                             </button>
                         </form>
                     </motion.div>

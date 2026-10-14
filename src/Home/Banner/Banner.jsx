@@ -84,8 +84,8 @@ const Banner = () => {
                             className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2"
                         >
                             <a 
-                                href="/My_Resume.pdf" 
-                                download="Muntasir_Resume.pdf" 
+                                href="/CV_Muntasir.pdf" 
+                                download="CV_Muntasir.pdf" 
                                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 shadow-emerald-600/20 group"
                             >
                                 Download Resume
@@ -146,15 +146,6 @@ const Banner = () => {
                                 alt="Muntasir Mahmud" 
                                 className="w-full h-full object-cover object-[center_20%]"
                             />
-                        </div>
-
-                        {/* Experience Pill Badge */}
-                        <div className="absolute -bottom-2 right-4 md:right-8 bg-white border border-gray-100 px-5 py-2.5 rounded-2xl shadow-lg flex items-center gap-3">
-                            <span className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></span>
-                            <div>
-                                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Experience</p>
-                                <p className="text-sm font-extrabold text-gray-900">2+ Years</p>
-                            </div>
                         </div>
                     </div>
                 </motion.div>

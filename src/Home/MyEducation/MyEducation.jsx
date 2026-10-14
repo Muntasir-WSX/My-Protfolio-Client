@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FiBookOpen, FiCalendar, FiStar } from 'react-icons/fi';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
-
 const MyEducation = () => {
     const [education, setEducation] = useState([]);
     const axiosPublic = useAxiosPublic();
@@ -18,45 +17,37 @@ const MyEducation = () => {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.3 }
+            transition: { staggerChildren: 0.15 }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, x: -20, filter: "blur(5px)" },
+        hidden: { opacity: 0, y: 15 },
         visible: { 
             opacity: 1, 
-            x: 0, 
-            filter: "blur(0px)",
-            transition: { duration: 0.8, ease: "easeOut" }
+            y: 0, 
+            transition: { duration: 0.4, ease: "easeOut" }
         }
     };
 
     return (
-        <section className="bg-[#0a0a0a] min-h-screen py-20 px-6 md:px-16 relative overflow-hidden">
-            {/* Background Glow */}
-            <div className="absolute top-1/2 left-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] -translate-y-1/2"></div>
-
-            <div className="container mx-auto max-w-7xl relative z-10">
+        <section id="education" className="bg-white border-t border-gray-100 py-20 px-6 md:px-16 text-gray-900 relative overflow-hidden">
+            <div className="container mx-auto max-w-5xl relative z-10">
+                
                 {/* Header Section */}
-                                <motion.div 
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    className="mb-16 text-center lg:text-left"
-                                >
-                                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                                        <span className="w-12 h-0.5 bg-orange-600"></span>
-                                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase">
-                                            Career Path
-                                        </h2>
-                                    </div>
-                                    <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">
-    Education
-</span>
-                                    </h1>
-                                </motion.div>
+                <motion.div 
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12 text-center lg:text-left"
+                >
+                    <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
+                        Career Path
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
+                        Educational Background
+                    </h2>
+                </motion.div>
 
                 {/* Timeline Section */}
                 <motion.div 
@@ -64,42 +55,44 @@ const MyEducation = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="relative border-l border-gray-800 ml-4 md:ml-8 space-y-12"
+                    className="relative border-l-2 border-emerald-100 ml-4 md:ml-6 space-y-8"
                 >
-                    {education.map((item, index) => (
+                    {education.map((item) => (
                         <motion.div 
                             key={item._id} 
                             variants={itemVariants}
-                            className="relative pl-8 md:pl-12 group"
+                            className="relative pl-6 md:pl-10 group"
                         >
-                            {/* Timeline Bullet */}
-                            <div className="absolute -left-2.25 top-2 w-4 h-4 rounded-full bg-[#0a0a0a] border-2 border-orange-600 group-hover:bg-orange-600 transition-all duration-300 shadow-[0_0_10px_rgba(234,88,12,0.5)]"></div>
+                            {/* Minimal Timeline Bullet */}
+                            <div className="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
 
-                            <div className="bg-[#111]/50 border border-gray-800 p-6 md:p-8 rounded-2xl backdrop-blur-sm hover:border-orange-600/50 transition-all duration-500">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                                    <div className="flex items-center gap-4">
-                                        <div className="p-3 bg-orange-600/10 rounded-lg text-orange-500">
-                                            <FiBookOpen size={24} />
+                            {/* Minimal Education Card */}
+                            <div className="bg-gray-50/60 border border-gray-200/80 p-6 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white transition-all duration-300 shadow-xs">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2.5 bg-emerald-50 rounded-xl text-emerald-600">
+                                            <FiBookOpen size={20} />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">{item.degree}</h3>
-                                            <p className="text-orange-500 font-medium tracking-wide">{item.institution}</p>
+                                            <h3 className="text-lg md:text-xl font-bold text-gray-900">{item.degree}</h3>
+                                            <p className="text-emerald-700 font-semibold text-sm">{item.institution}</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-2 px-4 py-1.5 bg-[#1a1a1a] border border-gray-700 rounded-full text-gray-400 text-sm">
-                                        <FiCalendar className="text-orange-600" />
+                                    
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 text-xs font-medium w-fit">
+                                        <FiCalendar className="text-emerald-600" />
                                         {item.year}
                                     </div>
                                 </div>
 
-                                <p className="text-gray-400 leading-relaxed font-light mb-6 max-w-3xl">
+                                <p className="text-gray-600 text-sm md:text-base leading-relaxed font-normal mb-4">
                                     {item.description}
                                 </p>
 
                                 {item.cgpa && (
-                                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600/5 border border-orange-600/20 rounded-xl">
-                                        <FiStar className="text-orange-500 fill-orange-500" />
-                                        <span className="text-gray-200 font-bold uppercase text-xs tracking-widest">Result: {item.cgpa}</span>
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50/80 border border-emerald-200/60 rounded-lg">
+                                        <FiStar className="text-emerald-600 fill-emerald-600 text-xs" />
+                                        <span className="text-gray-800 font-bold text-xs">CGPA / Result: {item.cgpa}</span>
                                     </div>
                                 )}
                             </div>
@@ -107,17 +100,6 @@ const MyEducation = () => {
                     ))}
                 </motion.div>
             </div>
-
-            <style jsx="true">{`
-                .stroke-text-edu {
-                    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
-                }
-                @media (max-width: 768px) {
-                    .stroke-text-edu {
-                        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
-                    }
-                }
-            `}</style>
         </section>
     );
 };

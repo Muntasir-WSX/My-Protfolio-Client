@@ -100,8 +100,8 @@ const NavBar = () => {
             </button>
           ) : (
             <a 
-              href="/My_Resume.pdf" 
-              download="Muntasir_Resume.pdf"
+              href="/CV_Muntasir.pdf" 
+              download="CV_Muntasir.pdf"
               className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer ml-4 flex items-center justify-center shadow-xs"
             >
               Resume
@@ -185,8 +185,8 @@ const NavBar = () => {
                   </button>
                 ) : (
                   <a 
-                    href="/My_Resume.pdf" 
-                    download="Muntasir_Resume.pdf"
+                    href="/CV_Muntasir.pdf" 
+                    download="CV_Muntasir.pdf"
                     className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all block text-center"
                   >
                     Resume

@@ -29,29 +29,28 @@ const MyCertificates = () => {
     if (isLoading) return <Loader />
 
     return (
-        <section id="certificates" className="bg-[#0a0a0a] py-16 md:py-24 px-4 md:px-16 relative overflow-hidden">
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px]"></div>
-
-            <div className="container mx-auto max-w-7xl relative z-10">
+        <section id="certificate" className="bg-white border-t border-gray-100 py-16 md:py-24 px-4 md:px-16 text-gray-900 relative overflow-hidden">
+            <div className="container mx-auto max-w-5xl relative z-10">
+                
                 {/* Header Section */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-12 md:mb-16 text-center lg:text-left"
+                    transition={{ duration: 0.5 }}
+                    className="mb-10 text-center lg:text-left"
                 >
-                    <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                        <span className="w-12 h-0.5 bg-orange-600"></span>
-                        <h2 className="text-orange-500 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase">Recognitions</h2>
-                    </div>
-                    <h1 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter">
-                        My <span className="text-transparent stroke-text hover:stroke-orange-600 transition-all duration-300">Achievements</span>
-                    </h1>
+                    <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
+                        Recognitions
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
+                        Certifications & Achievements
+                    </h2>
                 </motion.div>
 
-                {/* --- IMPROVED Category Tabs (Responsive) --- */}
-                <div className="mb-12">
-                    <div className="flex bg-[#111] p-1 md:p-1.5 rounded-xl border border-white/5 w-full md:w-fit overflow-hidden">
+                {/* --- Minimal Category Tabs --- */}
+                <div className="mb-10">
+                    <div className="flex bg-gray-100/80 p-1.5 rounded-xl border border-gray-200/80 w-full md:w-fit overflow-hidden">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
@@ -59,10 +58,10 @@ const MyCertificates = () => {
                                     setActiveTab(cat);
                                     setShowAll(false);
                                 }}
-                                className={`flex-1 md:flex-none px-4 md:px-8 py-3 rounded-lg text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                                className={`flex-1 md:flex-none px-5 md:px-8 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                                     activeTab === cat 
-                                    ? 'bg-orange-600 text-white shadow-[0_5px_15px_rgba(234,88,12,0.3)]' 
-                                    : 'text-gray-500 hover:text-white'
+                                    ? 'bg-emerald-600 text-white shadow-xs' 
+                                    : 'text-gray-600 hover:text-gray-900'
                                 }`}
                             >
                                 {cat}
@@ -72,64 +71,64 @@ const MyCertificates = () => {
                 </div>
 
                 {/* Timeline Section */}
-                <div className="relative border-l border-gray-800 ml-2 md:ml-8 space-y-8 md:space-y-12">
+                <div className="relative border-l-2 border-emerald-100 ml-2 md:ml-6 space-y-8">
                     <AnimatePresence mode='popLayout'>
                         {visibleCertificates.map((cert) => (
                             <motion.div 
                                 key={cert._id} 
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -15 }}
                                 layout 
-                                className="relative pl-6 md:pl-12 group"
+                                className="relative pl-6 md:pl-10 group"
                             >
                                 {/* Dot Indicator */}
-                                <div className="absolute -left-2.25 top-6 md:top-2 w-4 h-4 rounded-full bg-[#0a0a0a] border-2 border-orange-600 group-hover:bg-orange-600 transition-all duration-300"></div>
+                                <div className="absolute -left-[9px] top-6 md:top-4 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
 
-                                <div className="bg-[#111]/50 border border-gray-800 p-4 md:p-8 rounded-2xl md:rounded-3xl backdrop-blur-sm hover:border-orange-600/50 transition-all duration-500">
-                                    <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 md:gap-8">
+                                <div className="bg-gray-50/60 border border-gray-200/80 p-5 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white transition-all duration-300">
+                                    <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6">
                                         
                                         {/* Info Side */}
-                                        <div className="lg:col-span-2 order-2 lg:order-1">
-                                            <div className="flex flex-col gap-3">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="p-2.5 bg-orange-600/10 rounded-lg text-orange-500 shrink-0">
+                                        <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col justify-between">
+                                            <div className="space-y-3">
+                                                <div className="flex items-start gap-3">
+                                                    <div className="p-2.5 bg-emerald-50 rounded-xl text-emerald-600 shrink-0 mt-0.5">
                                                         <FiAward size={20} />
                                                     </div>
-                                                    <h3 className="text-lg md:text-2xl font-bold text-white uppercase tracking-tight leading-tight">
+                                                    <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-snug">
                                                         {cert.title}
                                                     </h3>
                                                 </div>
                                                 
-                                                <div className="flex flex-wrap items-center gap-3 text-sm">
-                                                    <span className="text-orange-500 font-semibold">{cert.organizer}</span>
-                                                    <span className="hidden md:block text-gray-700">|</span>
-                                                    <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/5 rounded-full text-gray-400 text-[10px] md:text-xs">
-                                                        <FiCalendar className="text-orange-600" /> {cert.date}
+                                                <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm">
+                                                    <span className="text-emerald-700 font-semibold">{cert.organizer}</span>
+                                                    <span className="hidden md:block text-gray-300">•</span>
+                                                    <div className="flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 text-xs font-medium">
+                                                        <FiCalendar className="text-emerald-600" /> {cert.date}
                                                     </div>
                                                 </div>
 
-                                                <p className="text-gray-500 text-xs md:text-sm font-light mt-2 italic leading-relaxed">
-                                                    Proudly issued for excellence in {cert.category}.
+                                                <p className="text-gray-500 text-xs md:text-sm font-normal italic leading-relaxed pt-1">
+                                                    Issued for excellence and completion in {cert.category.toLowerCase()}.
                                                 </p>
                                             </div>
                                         </div>
 
-                                        {/* Image Side (Mobile-Focused) */}
+                                        {/* Image Preview Side */}
                                         <div 
                                             onClick={() => setSelectedImage(cert.imageUrl)}
-                                            className="lg:col-span-1 order-1 lg:order-2 relative group/img overflow-hidden rounded-xl border border-white/10 h-44 md:h-full cursor-pointer"
+                                            className="lg:col-span-1 order-1 lg:order-2 relative group/img overflow-hidden rounded-xl border border-gray-200 h-40 md:h-full cursor-pointer bg-gray-100"
                                         >
                                             <img 
                                                 src={cert.imageUrl} 
                                                 alt={cert.title} 
-                                                className="w-full h-full object-cover opacity-80 group-hover/img:opacity-100 group-hover/img:scale-105 transition-all duration-700" 
+                                                className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" 
                                             />
-                                            {/* Mobile Overlay Hint */}
-                                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent md:bg-black/40 flex items-center justify-center">
-                                                <div className="flex flex-col items-center gap-2 md:translate-y-5 md:group-hover/img:translate-y-0 md:opacity-0 md:group-hover/img:opacity-100 transition-all duration-500">
-                                                    <div className="p-3 bg-white text-black rounded-full"><FiSearch size={18} /></div>
-                                                    <span className="text-white text-[10px] font-bold uppercase tracking-widest bg-black/50 px-3 py-1 rounded-full backdrop-blur-md">View Certificate</span>
+                                            
+                                            {/* Hover Overlay */}
+                                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                                <div className="flex items-center gap-2 bg-white/90 text-gray-900 text-xs font-bold px-3.5 py-2 rounded-full shadow-md backdrop-blur-xs">
+                                                    <FiSearch size={14} /> View Certificate
                                                 </div>
                                             </div>
                                         </div>
@@ -140,12 +139,12 @@ const MyCertificates = () => {
                     </AnimatePresence>
                 </div>
 
-                {/* Show More Button */}
+                {/* Show More / Show Less Button */}
                 {filteredCertificates.length > 3 && (
-                    <div className="mt-10 md:mt-12 ml-2 md:ml-8 pl-6 md:pl-12">
+                    <div className="mt-8 ml-2 md:ml-6 pl-6 md:pl-10">
                         <button 
                             onClick={() => setShowAll(!showAll)}
-                            className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#111] border border-gray-800 text-white font-bold uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-orange-600 transition-all shadow-lg active:scale-95 group"
+                            className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-emerald-600 transition-all cursor-pointer shadow-xs"
                         >
                             {showAll ? (
                                 <>Show Less <FiChevronUp /></>
@@ -157,23 +156,30 @@ const MyCertificates = () => {
                 )}
             </div>
 
-            {/* Fullscreen Image Modal - Handled exit and scale better */}
+            {/* Lightbox Modal */}
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div 
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-100 flex items-center justify-center p-2 md:p-4 bg-black/95 backdrop-blur-md"
+                        initial={{ opacity: 0 }} 
+                        animate={{ opacity: 1 }} 
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs"
                         onClick={() => setSelectedImage(null)}
                     >
                         <motion.div 
-                            initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }}
-                            className="relative max-w-5xl w-full"
+                            initial={{ scale: 0.9, opacity: 0 }} 
+                            animate={{ scale: 1, opacity: 1 }} 
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="relative max-w-4xl w-full bg-white rounded-2xl p-2 shadow-2xl overflow-hidden"
                             onClick={(e) => e.stopPropagation()} 
                         >
-                            <button className="absolute -top-14 right-0 text-white p-3 hover:text-orange-500" onClick={() => setSelectedImage(null)}>
-                                <FiX size={32} />
+                            <button 
+                                className="absolute top-4 right-4 bg-gray-900/80 hover:bg-gray-900 text-white p-2 rounded-full transition-colors cursor-pointer z-10" 
+                                onClick={() => setSelectedImage(null)}
+                            >
+                                <FiX size={20} />
                             </button>
-                            <img src={selectedImage} className="w-full h-auto max-h-[80vh] md:max-h-[85vh] object-contain rounded-lg shadow-2xl" alt="Full View" />
+                            <img src={selectedImage} className="w-full h-auto max-h-[80vh] object-contain rounded-xl" alt="Certificate Preview" />
                         </motion.div>
                     </motion.div>
                 )}
