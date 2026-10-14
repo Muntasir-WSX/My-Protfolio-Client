@@ -15,6 +15,8 @@ const NavBar = () => {
   const isAdmin = user && user.email === "alimuntasir2001@gmail.com";
   const isHomePage = location.pathname === "/";
 
+  const googleDriveResumeUrl = "https://drive.google.com/file/d/1Y829OxYy0flZtnRjDRiqvCwnoMKA7S98/view?usp=sharing";
+
   const links = [
     { name: "Home", to: "home" },
     { name: "About Me", to: "about" },
@@ -90,19 +92,20 @@ const NavBar = () => {
             )}
           </ul>
 
-          {/* Action Button */}
-          <div className="flex items-center gap-3 ml-4">
+          {/* Action Buttons (Half-rounded / rounded-xl) */}
+          <div className="flex items-center gap-2.5 ml-2">
             <a
-              href="/CV_Muntasir.pdf"
-              download="CV_Muntasir.pdf"
-              className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer flex items-center justify-center shadow-xs"
+              href={googleDriveResumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-emerald-600 transition-all cursor-pointer flex items-center justify-center shadow-2xs"
             >
               Resume
             </a>
             {user && (
               <button
                 onClick={handleSignOut}
-                className="bg-black text-white font-bold text-sm px-7 py-3 rounded-md hover:bg-emerald-600 transition-all cursor-pointer shadow-xs"
+                className="bg-gray-100 border border-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all cursor-pointer shadow-2xs"
               >
                 Sign Out
               </button>
@@ -175,20 +178,21 @@ const NavBar = () => {
                 )}
               </ul>
 
-              {/* Mobile Action Button */}
+              {/* Mobile Action Buttons */}
               <div className="mt-auto pt-6 border-t border-gray-100">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2.5">
                   <a
-                    href="/CV_Muntasir.pdf"
-                    download="CV_Muntasir.pdf"
-                    className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all block text-center"
+                    href={googleDriveResumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm uppercase tracking-wider cursor-pointer shadow-xs disabled:opacity-70"
                   >
                     Resume
                   </a>
                   {user && (
                     <button
                       onClick={handleSignOut}
-                      className="w-full py-3.5 bg-black text-white font-bold text-sm rounded-md hover:bg-emerald-600 transition-all"
+                      className="w-full py-3.5 bg-gray-100 border border-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all"
                     >
                       Sign Out
                     </button>

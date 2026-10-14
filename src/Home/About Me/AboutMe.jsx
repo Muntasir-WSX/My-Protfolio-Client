@@ -44,21 +44,17 @@ const AboutMe = () => {
           className="bg-gray-50/60 border border-gray-200/80 p-8 md:p-12 rounded-2xl shadow-xs space-y-6 text-gray-700 text-base md:text-lg leading-relaxed font-normal"
         >
           <p>
-            Hello! I am <span className="text-gray-900 font-bold">Muntasir Mahmud</span>, a 
+            Hello! I am <span className="text-emerald-700 font-bold">Muntasir Mahmud</span>, a 
             passionate <span className="text-emerald-700 font-bold">Full-Stack Developer</span> and a Computer Science & Engineering student at 
-            <span className="text-gray-900 font-semibold"> International Islamic University Chittagong (IIUC)</span>.
+            <span className="text-gray-900 font-bold"> International Islamic University Chittagong (IIUC)</span>.
           </p>
 
           <p>
-            I specialize in engineering full-stack web applications using <span className="text-gray-900 font-bold">Next.js</span>, <span className="text-gray-900 font-bold">TypeScript</span>, and <span className="text-gray-900 font-bold">PostgreSQL</span> with <span className="text-emerald-700 font-bold">Prisma ORM</span>. To deliver high-performance and scalable systems, I integrate <span className="text-gray-900 font-semibold">Redis</span> for caching and leverage <span className="text-gray-900 font-semibold">Docker</span> for seamless containerization and deployment.
+            I specialize in engineering full-stack web applications using <span className="text-emerald-700 font-bold">Next.js</span>, <span className="text-emerald-700 font-bold">TypeScript</span>, and <span className="text-emerald-700 font-bold">PostgreSQL</span> with <span className="text-emerald-700 font-bold">Prisma ORM</span>. To deliver high-performance and scalable systems, I integrate <span className="text-emerald-700 font-bold">Redis</span> for caching and leverage <span className="text-emerald-700 font-bold">Docker</span> for seamless containerization and deployment.
           </p>
 
           <p>
-            While my web development foundation was built upon the <span className="text-gray-800 font-medium">MERN stack</span> (MongoDB, Express.js, React, Node.js), I have evolved into architecting production-ready backend workflows and optimized databases that meet modern industry standards.
-          </p>
-
-          <p className="border-l-2 border-emerald-600 pl-4 py-1 text-gray-600 italic text-sm md:text-base">
-            "Outside of coding, I enjoy exploring nature, following European football, and gaming."
+            While my web development foundation was built upon the <span className="text-emerald-700 font-medium">MERN stack</span> (MongoDB, Express.js, React, Node.js), I have evolved into architecting production-ready backend workflows and optimized databases that meet modern industry standards.
           </p>
         </motion.div>
       </motion.div>
