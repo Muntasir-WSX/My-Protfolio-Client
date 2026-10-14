@@ -10,7 +10,8 @@ import Contact from './Contact/Contact';
 
 const Home = () => {
     return (
-        <div>
+      
+        <div className="bg-grid min-h-screen text-gray-900">
             <section id="home"><Banner /></section>
             <section id="about"><AboutMe /></section>
             <section id="skills"><MyTechnologies /></section>

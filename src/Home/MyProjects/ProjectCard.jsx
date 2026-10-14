@@ -1,18 +1,18 @@
 import React from "react";
-import { FiArrowUpRight, FiGithub, FiServer } from "react-icons/fi";
+import { FiArrowUpRight, FiGithub, FiServer, FiInfo } from "react-icons/fi";
+import { Link } from "react-router";
 
 const ProjectCard = ({ project }) => {
   return (
     <div className="group bg-gray-50/70 border border-gray-200/80 rounded-2xl overflow-hidden transition-all duration-300 hover:border-emerald-600/50 hover:bg-white hover:shadow-xs flex flex-col h-full">
       
-      {/* 📸 Fixed Image Container (No Auto-Scroll) */}
+      {/* 📸 Image Container */}
       <div className="relative h-56 overflow-hidden bg-gray-100 border-b border-gray-100">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
         />
-        {/* Soft Light Overlay */}
         <div className="absolute inset-0 bg-linear-to-t from-gray-900/20 via-transparent to-transparent opacity-40 pointer-events-none"></div>
       </div>
 
@@ -42,16 +42,24 @@ const ProjectCard = ({ project }) => {
 
         {/* 🔗 Action Buttons */}
         <div className="pt-3 space-y-2.5 mt-auto">
-          <a
-            href={project.liveLink}
-            target="_blank"
-            rel="noreferrer"
+          {/* Details Button */}
+          <Link
+            to={`/project/${project._id}`}
             className="flex items-center justify-center gap-2 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xs cursor-pointer"
           >
-            Live Demo <FiArrowUpRight size={16} />
-          </a>
+            View Details <FiInfo size={16} />
+          </Link>
 
           <div className="grid grid-cols-2 gap-2.5">
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200 bg-white text-gray-700 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
+            >
+              Live Demo <FiArrowUpRight size={14} />
+            </a>
+
             {project.clientCode && (
               <a
                 href={project.clientCode}
@@ -59,17 +67,7 @@ const ProjectCard = ({ project }) => {
                 rel="noreferrer"
                 className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200 bg-white text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
               >
-                Client <FiGithub size={14} />
-              </a>
-            )}
-            {project.serverCode && (
-              <a
-                href={project.serverCode}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200 bg-white text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
-              >
-                Server <FiServer size={14} />
+                Client Repo <FiGithub size={14} />
               </a>
             )}
           </div>

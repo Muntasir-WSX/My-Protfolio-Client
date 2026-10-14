@@ -4,11 +4,13 @@ import Logo from "../Logo/Logo";
 
 const Loader = () => {
   return (
-    <div className="fixed inset-0 bg-[#0a0a0a] flex flex-col items-center justify-center z-50">
+    <div className="fixed inset-0 bg-white/95 backdrop-blur-xs flex flex-col items-center justify-center z-50">
+      
+      {/* Animated Logo Container */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{
-          opacity: [0.5, 1, 0.5],
+          opacity: [0.6, 1, 0.6],
           scale: [0.98, 1, 0.98],
         }}
         transition={{
@@ -16,26 +18,27 @@ const Loader = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="relative"
+        className="relative flex items-center justify-center p-4"
       >
+        <Logo />
       </motion.div>
 
       {/* Animated "Loading..." Text */}
       <motion.p
-        initial={{ opacity: 0.3 }}
-        animate={{ opacity: [0.3, 1, 0.3] }}
+        initial={{ opacity: 0.4 }}
+        animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{
           duration: 1.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="mt-6 text-[10px] uppercase tracking-[0.35em] font-semibold text-emerald-500/80"
+        className="mt-4 text-[11px] uppercase tracking-[0.35em] font-extrabold text-emerald-600"
       >
         Loading...
       </motion.p>
 
-      {/* Subtle Progress Bar */}
-      <div className="mt-3 w-40 h-[1.5px] bg-white/5 rounded-full overflow-hidden">
+      {/* Emerald Progress Bar */}
+      <div className="mt-3 w-40 h-[2px] bg-emerald-100 rounded-full overflow-hidden">
         <motion.div
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
@@ -44,7 +47,7 @@ const Loader = () => {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="w-full h-full bg-gradient-to-r from-transparent via-emerald-500 to-transparent"
+          className="w-full h-full bg-gradient-to-r from-transparent via-emerald-600 to-transparent"
         />
       </div>
     </div>

@@ -17,6 +17,7 @@ import Contact from '../Home/Contact/Contact';
 import MyEducation from '../Home/MyEducation/MyEducation';
 import MyExperience from '../Home/MyExperience/MyExperience';
 import MyCertificates from '../Home/MyCertificates/MyCertificates';
+import ProjectsDetails from '../Home/MyProjects/ProjectsDetails';
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +35,12 @@ const Router = createBrowserRouter([
       {
         path: "projects",
         element: <MyProjects />
+      },
+      {
+        path: "project/:id",
+        element: <ProjectsDetails />
+      },
+      {
       },
       {
         path: "contact",

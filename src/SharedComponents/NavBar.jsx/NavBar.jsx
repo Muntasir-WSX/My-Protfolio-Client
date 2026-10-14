@@ -5,6 +5,7 @@ import { Link as RouterLink } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../Logo/Logo";
 import { AuthContext } from "../../AuthProvider/Authprovier";
+import ThemeToggle from "../ThemeToggle";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,9 +22,9 @@ const NavBar = () => {
     { name: "Home", to: "home" },
     { name: "About Me", to: "about" },
     { name: "Skills", to: "skills" },
+    { name: "Projects", to: "projects" },
     { name: "Education", to: "education" },
     { name: "Experience", to: "experience" },
-    { name: "Projects", to: "projects" },
     { name: "Certificate", to: "certificate" },
     { name: "Contact Me", to: "contact" },
   ];
@@ -37,8 +38,8 @@ const NavBar = () => {
 
   const NavItem = ({ link, mobile = false }) => {
     const baseClass = mobile 
-      ? "block w-full px-8 py-4 text-sm font-semibold transition-all cursor-pointer text-gray-700 hover:text-emerald-600 hover:bg-gray-50" 
-      : "cursor-pointer transition-colors text-sm font-semibold text-gray-700 hover:text-emerald-600 px-1 py-2";
+      ? "block w-full px-8 py-4 text-sm font-semibold transition-all cursor-pointer text-gray-700 hover:text-emerald-600 hover:bg-gray-50 dark:text-slate-200 dark:hover:bg-slate-800" 
+      : "cursor-pointer transition-colors text-sm font-semibold text-gray-700 hover:text-emerald-600 px-1 py-2 dark:text-slate-200";
 
     if (!isHomePage) {
       return (
@@ -64,7 +65,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-100 text-gray-900 w-full sticky top-0 z-[100] shadow-xs">
+    <nav className="bg-white border-b border-gray-100 text-gray-900 w-full sticky top-0 z-[100] shadow-xs dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-24">
         
         {/* Logo Section */}
@@ -84,7 +85,7 @@ const NavBar = () => {
               <li>
                 <RouterLink 
                   to="muntasir-admin" 
-                  className={`text-sm font-semibold text-gray-700 hover:text-emerald-600 transition-colors cursor-pointer ${location.pathname === '/muntasir-admin' ? 'border-b-2 border-emerald-600 text-emerald-600 font-bold' : ''}`}
+                  className={`text-sm font-semibold text-gray-700 hover:text-emerald-600 transition-colors cursor-pointer dark:text-slate-200 ${location.pathname === '/muntasir-admin' ? 'border-b-2 border-emerald-600 text-emerald-600 font-bold' : ''}`}
                 >
                   Admin
                 </RouterLink>
@@ -94,18 +95,19 @@ const NavBar = () => {
 
           {/* Action Buttons (Half-rounded / rounded-xl) */}
           <div className="flex items-center gap-2.5 ml-2">
+            <ThemeToggle compact />
             <a
               href={googleDriveResumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-emerald-600 transition-all cursor-pointer flex items-center justify-center shadow-2xs"
+              className="bg-black text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-emerald-600 transition-all cursor-pointer flex items-center justify-center shadow-2xs dark:bg-slate-950"
             >
               Resume
             </a>
             {user && (
               <button
                 onClick={handleSignOut}
-                className="bg-gray-100 border border-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all cursor-pointer shadow-2xs"
+                className="bg-gray-100 border border-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all cursor-pointer shadow-2xs dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200"
               >
                 Sign Out
               </button>
@@ -119,9 +121,9 @@ const NavBar = () => {
             onClick={() => setIsOpen(true)} 
             className="flex flex-col gap-1.5 items-end p-2 cursor-pointer relative z-[110]"
           >
-            <span className="w-7 h-0.5 bg-gray-900"></span>
+            <span className="w-7 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
             <span className="w-5 h-0.5 bg-emerald-600"></span>
-            <span className="w-7 h-0.5 bg-gray-900"></span>
+            <span className="w-7 h-0.5 bg-gray-900 dark:bg-gray-100"></span>
           </button>
         </div>
       </div>
@@ -144,7 +146,7 @@ const NavBar = () => {
               animate={{ x: 0 }} 
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute top-0 left-0 h-full w-72 bg-white border-r border-gray-100 flex flex-col z-[130] p-6 shadow-2xl"
+              className="absolute top-0 left-0 h-full w-72 bg-white border-r border-gray-100 flex flex-col z-[130] p-6 shadow-2xl dark:bg-gray-900 dark:border-gray-700"
             >
               {/* Drawer Header */}
               <div className="pb-6 border-b border-gray-100 flex justify-between items-center">
@@ -170,7 +172,7 @@ const NavBar = () => {
                     <RouterLink 
                       to="muntasir-admin" 
                       onClick={() => setIsOpen(false)}
-                      className="block w-full px-8 py-4 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-gray-50"
+                      className="block w-full px-8 py-4 text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-gray-50 dark:text-slate-200 dark:hover:bg-slate-800"
                     >
                       Admin
                     </RouterLink>
@@ -181,6 +183,7 @@ const NavBar = () => {
               {/* Mobile Action Buttons */}
               <div className="mt-auto pt-6 border-t border-gray-100">
                 <div className="flex flex-col gap-2.5">
+                  <ThemeToggle />
                   <a
                     href={googleDriveResumeUrl}
                     target="_blank"
@@ -192,7 +195,7 @@ const NavBar = () => {
                   {user && (
                     <button
                       onClick={handleSignOut}
-                      className="w-full py-3.5 bg-gray-100 border border-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all"
+                      className="w-full py-3.5 bg-gray-100 border border-gray-200 text-gray-800 font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200"
                     >
                       Sign Out
                     </button>

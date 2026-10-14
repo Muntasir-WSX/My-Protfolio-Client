@@ -56,7 +56,7 @@ const Banner = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] flex items-center bg-white text-gray-900 overflow-hidden px-6 md:px-16 py-12"
+      className="relative min-h-[90vh] flex items-center bg-transparent text-gray-900 overflow-hidden px-6 md:px-16 py-12"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full z-10">
         {/* Left Text Content Section */}
@@ -127,7 +127,7 @@ const Banner = () => {
                 smooth={true}
                 duration={800}
                 offset={-80}
-                className="border border-gray-300 text-gray-800 hover:bg-gray-900 hover:text-white hover:border-gray-900 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center cursor-pointer shadow-2xs"
+                className="border border-gray-300 text-gray-800 hover:bg-gray-900 hover:text-white hover:border-gray-900 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center cursor-pointer shadow-2xs dark:border-slate-600 dark:text-slate-100 dark:hover:bg-emerald-600 dark:hover:border-emerald-600"
               >
                 Get In Touch
               </ScrollLink>
@@ -145,7 +145,7 @@ const Banner = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.name}
-                  className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-700 hover:text-white hover:bg-emerald-600 hover:border-emerald-600 transition-all duration-300 text-base shadow-2xs"
+                  className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-700 hover:text-white hover:bg-emerald-600 hover:border-emerald-600 transition-all duration-300 text-base shadow-2xs dark:border-slate-700 dark:text-slate-200"
                 >
                   {item.icon}
                 </a>

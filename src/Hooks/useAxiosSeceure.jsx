@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/Authprovier";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://my-portfolio-backend-mu-eight.vercel.app/'
+    baseURL: 'https://my-portfolio-backend-mu-eight.vercel.app'
 });
 
 const useAxiosSecure = () => {

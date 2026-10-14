@@ -36,7 +36,7 @@ const MyExperience = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section id="experience" className="py-20 bg-white border-t border-gray-100 px-6 md:px-12 text-gray-900 relative overflow-hidden">
+    <section id="experience" className="py-20 bg-transparent border-t border-gray-100 px-6 md:px-12 text-gray-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* --- Header Section --- */}

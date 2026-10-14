@@ -20,7 +20,7 @@ const AboutMe = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-white text-gray-900 px-6 md:px-16 overflow-hidden border-t border-gray-100">
+    <section id="about" className="py-20 bg-transparent text-gray-900 px-6 md:px-16 overflow-hidden border-t border-gray-100">
       <motion.div
         variants={containerVariants}
         initial="hidden"

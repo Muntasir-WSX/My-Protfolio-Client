@@ -36,7 +36,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="bg-white border-t border-gray-100 py-16 md:py-24 px-4 md:px-16 text-gray-900 relative overflow-hidden">
+        <section id="contact" className="bg-transparent border-t border-gray-100 py-16 md:py-24 px-4 md:px-16 text-gray-900 relative overflow-hidden">
             <div className="container mx-auto max-w-5xl relative z-10">
                 
                 {/* Header Section */}

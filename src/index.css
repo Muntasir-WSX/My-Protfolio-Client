@@ -1,5 +1,164 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@custom-variant dark (&:where(.dark, .dark *));
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
 
+body {
+  background: #f8fafc;
+  transition: background-color 200ms ease, color 200ms ease;
+}
 
+html.dark body {
+  background: #0f172a;
+}
+
+@layer utilities {
+  .bg-grid {
+    --grid-size: 64px;
+    background-color: #f8fafc;
+    background-image:
+      radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.1), transparent 36rem),
+      linear-gradient(to right, rgba(15, 23, 42, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.055) 1px, transparent 1px);
+    background-size: auto, var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
+    background-position: center top, 0 0, 0 0;
+    background-repeat: no-repeat, repeat, repeat;
+  }
+
+  .bg-grid-dots {
+    --dot-size: 32px;
+    background-color: #f8fafc;
+    background-image:
+      radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.1), transparent 36rem),
+      radial-gradient(rgba(15, 23, 42, 0.16) 1px, transparent 1px);
+    background-size: auto, var(--dot-size) var(--dot-size);
+    background-position: center top, 0 0;
+    background-repeat: no-repeat, repeat;
+  }
+
+  .bg-grid-dark {
+    --grid-size: 40px;
+    background-color: #0f172a;
+    background-image:
+      radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.16), transparent 36rem),
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: auto, var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
+    background-position: center top, 0 0, 0 0;
+    background-repeat: no-repeat, repeat, repeat;
+  }
+
+  @media (max-width: 640px) {
+    .bg-grid,
+    .bg-grid-dark {
+      --grid-size: 44px;
+    }
+
+    .bg-grid-dots {
+      --dot-size: 24px;
+    }
+  }
+}
+
+html.dark .bg-grid {
+  background-color: #0f172a;
+  background-image:
+    radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.16), transparent 36rem),
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+html.dark .bg-white,
+html.dark .bg-white\/80,
+html.dark .bg-white\/90 {
+  background-color: #111827;
+}
+
+html.dark .bg-gray-50,
+html.dark .bg-gray-50\/50,
+html.dark .bg-gray-50\/60,
+html.dark .bg-gray-50\/70 {
+  background-color: #1e293b;
+}
+
+html.dark .bg-gray-100,
+html.dark .bg-gray-100\/70 {
+  background-color: #334155;
+}
+
+html.dark .bg-emerald-50\/60 {
+  background-color: rgb(6 78 59 / 0.35);
+}
+
+html.dark .text-gray-900,
+html.dark .text-gray-800,
+html.dark .text-black {
+  color: #f1f5f9;
+}
+
+html.dark .text-gray-700 {
+  color: #cbd5e1;
+}
+
+html.dark .text-gray-600,
+html.dark .text-gray-500 {
+  color: #94a3b8;
+}
+
+html.dark .text-gray-400 {
+  color: #64748b;
+}
+
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-gray-300,
+html.dark .border-gray-200\/70,
+html.dark .border-gray-200\/80 {
+  border-color: #334155;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b;
+}
+
+html.dark .hover\:bg-gray-50:hover,
+html.dark .hover\:bg-gray-100\/70:hover,
+html.dark .hover\:bg-gray-200:hover {
+  background-color: #334155;
+}
+
+html.dark .hover\:text-gray-900:hover {
+  color: #f8fafc;
+}
+
+html.dark .hover\:text-black:hover {
+  color: #f8fafc;
+}
+
+html.dark .hover\:bg-emerald-50\/60:hover {
+  background-color: rgb(6 78 59 / 0.35);
+}
+
+html.dark .bg-black {
+  background-color: #020617;
+}
+
+html.dark .shadow-xs,
+html.dark .shadow-2xs,
+html.dark .shadow-sm {
+  --tw-shadow-color: rgb(2 6 23 / 0.4);
+}

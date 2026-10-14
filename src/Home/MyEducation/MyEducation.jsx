@@ -31,7 +31,7 @@ const MyEducation = () => {
     };
 
     return (
-        <section id="education" className="bg-white border-t border-gray-100 py-20 px-6 md:px-16 text-gray-900 relative overflow-hidden">
+        <section id="education" className="bg-transparent border-t border-gray-100 py-20 px-6 md:px-16 text-gray-900 relative overflow-hidden">
             <div className="container mx-auto max-w-5xl relative z-10">
                 
                 {/* Header Section */}
@@ -55,7 +55,7 @@ const MyEducation = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="relative border-l-2 border-emerald-100 ml-4 md:ml-6 space-y-8"
+                    className="relative border-l-2 border-emerald-100 ml-4 md:ml-6 space-y-8 dark:border-emerald-900"
                 >
                     {education.map((item) => (
                         <motion.div 
@@ -64,13 +64,13 @@ const MyEducation = () => {
                             className="relative pl-6 md:pl-10 group"
                         >
                             {/* Minimal Timeline Bullet */}
-                            <div className="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
+                            <div className="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300 dark:bg-slate-900"></div>
 
                             {/* Minimal Education Card */}
-                            <div className="bg-gray-50/60 border border-gray-200/80 p-6 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white transition-all duration-300 shadow-xs">
+                            <div className="bg-gray-50/60 border border-gray-200/80 p-6 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white transition-all duration-300 shadow-xs dark:bg-slate-800/80 dark:border-slate-700 dark:hover:bg-slate-800">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2.5 bg-emerald-50 rounded-xl text-emerald-600">
+                                        <div className="p-2.5 bg-emerald-50 rounded-xl text-emerald-600 dark:bg-emerald-950/60">
                                             <FiBookOpen size={20} />
                                         </div>
                                         <div>
@@ -79,7 +79,7 @@ const MyEducation = () => {
                                         </div>
                                     </div>
                                     
-                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 text-xs font-medium w-fit">
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 text-xs font-medium w-fit dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300">
                                         <FiCalendar className="text-emerald-600" />
                                         {item.year}
                                     </div>
@@ -90,9 +90,9 @@ const MyEducation = () => {
                                 </p>
 
                                 {item.cgpa && (
-                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50/80 border border-emerald-200/60 rounded-lg">
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50/80 border border-emerald-200/60 rounded-lg dark:bg-emerald-950/60 dark:border-emerald-800">
                                         <FiStar className="text-emerald-600 fill-emerald-600 text-xs" />
-                                        <span className="text-gray-800 font-bold text-xs">CGPA / Result: {item.cgpa}</span>
+                                        <span className="text-gray-800 font-bold text-xs dark:text-slate-100">CGPA / Result: {item.cgpa}</span>
                                     </div>
                                 )}
                             </div>
