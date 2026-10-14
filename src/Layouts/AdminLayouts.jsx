@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router";
 import { FiHome, FiMenu, FiX } from "react-icons/fi";
-import ThemeToggle from "../SharedComponents/ThemeToggle";
 
 const AdminLayouts = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -21,15 +20,12 @@ const AdminLayouts = () => {
       {/* --- Mobile Top Header --- */}
       <div className="lg:hidden fixed top-0 left-0 w-full h-16 bg-white/80 backdrop-blur-md border-b border-gray-200 z-50 flex items-center px-6 justify-between shadow-2xs">
         <h2 className="text-base font-bold text-emerald-700 tracking-wider uppercase">Admin Panel</h2>
-        <div className="flex items-center gap-2">
-          <ThemeToggle compact />
-          <button
+        <button
             onClick={() => setIsDrawerOpen(true)}
             className="p-2.5 bg-black text-white rounded-xl shadow-xs cursor-pointer"
           >
             <FiMenu size={20} />
-          </button>
-        </div>
+        </button>
       </div>
 
       {/* --- Sidebar (Drawer) --- */}
@@ -75,9 +71,6 @@ const AdminLayouts = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-4">
-              <ThemeToggle />
-            </div>
           </div>
 
           {/* Bottom Part: Back to Home */}

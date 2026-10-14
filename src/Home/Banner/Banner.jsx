@@ -127,7 +127,7 @@ const Banner = () => {
                 smooth={true}
                 duration={800}
                 offset={-80}
-                className="border border-gray-300 text-gray-800 hover:bg-gray-900 hover:text-white hover:border-gray-900 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center cursor-pointer shadow-2xs dark:border-slate-600 dark:text-slate-100 dark:hover:bg-emerald-600 dark:hover:border-emerald-600"
+                className="border border-gray-300 text-gray-800 hover:bg-gray-900 hover:text-white hover:border-gray-900 px-7 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center cursor-pointer shadow-2xs"
               >
                 Get In Touch
               </ScrollLink>
@@ -145,7 +145,7 @@ const Banner = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.name}
-                  className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-700 hover:text-white hover:bg-emerald-600 hover:border-emerald-600 transition-all duration-300 text-base shadow-2xs dark:border-slate-700 dark:text-slate-200"
+                  className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-700 hover:text-white hover:bg-emerald-600 hover:border-emerald-600 transition-all duration-300 text-base shadow-2xs"
                 >
                   {item.icon}
                 </a>
