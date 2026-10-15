@@ -73,12 +73,12 @@ const Contact = () => {
                         <div className="space-y-5">
                             {/* Email Card */}
                             <div className="theme-card flex items-center gap-4 p-4 rounded-2xl">
-                                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 rounded-xl">
+                                <div className="p-3 bg-emerald-50  text-emerald-600 rounded-xl">
                                     <FiMail size={20} />
                                 </div>
                                 <div>
                                     <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Email Me</p>
-                                    <a href="mailto:alimuntasir2001@gmail.com" className="text-gray-900 dark:text-gray-100 font-semibold text-sm md:text-base hover:text-emerald-600 transition-colors">
+                                    <a href="mailto:alimuntasir2001@gmail.com" className="text-gray-900  font-semibold text-sm md:text-base hover:text-emerald-600 transition-colors">
                                         alimuntasir2001@gmail.com
                                     </a>
                                 </div>
@@ -86,12 +86,12 @@ const Contact = () => {
 
                             {/* Phone Card */}
                             <div className="theme-card flex items-center gap-4 p-4 rounded-2xl">
-                                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 rounded-xl">
+                                <div className="p-3 bg-emerald-50  text-emerald-600 rounded-xl">
                                     <FiPhone size={20} />
                                 </div>
                                 <div>
                                     <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">Call Me</p>
-                                    <a href="tel:+8801849643758" className="text-gray-900 dark:text-gray-100 font-semibold text-sm md:text-base hover:text-emerald-600 transition-colors">
+                                    <a href="tel:+8801849643758" className="text-gray-900  font-semibold text-sm md:text-base hover:text-emerald-600 transition-colors">
                                         +880 1849643758
                                     </a>
                                 </div>
@@ -135,7 +135,7 @@ const Contact = () => {
                                     <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                                     <input 
                                         {...register("phone", { required: true })}
-                                        className="w-full bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl pl-11 pr-4 py-3.5 text-gray-900 dark:text-gray-100 focus:border-emerald-600 outline-none transition-colors text-sm placeholder:text-gray-400"
+                                        className="w-full bg-white  border border-gray-200  rounded-xl pl-11 pr-4 py-3.5 text-gray-900  focus:border-emerald-600 outline-none transition-colors text-sm placeholder:text-gray-400"
                                         placeholder="Phone Number"
                                     />
                                 </div>

@@ -14,11 +14,6 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-.dark body {
-  background-color: #0b1120;
-  color: #e2e8f0; /* Light text for dark mode */
-}
-
 /* Base Typography & Light Mode Text Overrides */
 p, span, h1, h2, h3, h4, h5, h6 {
   color: inherit;
@@ -29,12 +24,6 @@ p, span, h1, h2, h3, h4, h5, h6 {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   color: #1e293b; /* Dark text inside card for light mode */
-}
-
-.dark .theme-card {
-  background-color: rgba(31, 41, 55, 0.72);
-  border-color: rgba(75, 85, 99, 0.85);
-  color: #f1f5f9; /* Bright text inside card for dark mode */
 }
 
 /* Form Inputs */
@@ -48,108 +37,14 @@ p, span, h1, h2, h3, h4, h5, h6 {
   color: #64748b;
 }
 
-.dark .theme-input {
-  background-color: #1f2937;
-  border-color: #374151;
-  color: #f8fafc !important;
-}
-
-.dark .theme-input::placeholder {
-  color: #9ca3af;
-}
-
 /* Timeline & Misc */
 .theme-timeline-dot {
   background-color: #ffffff;
 }
 
-.dark .theme-timeline-dot {
-  background-color: #1f2937;
-}
-
 .hamburger-bar {
   background-color: #0f172a;
   transition: background-color 200ms ease;
-}
-
-.dark .hamburger-bar {
-  background-color: #f3f4f6 !important;
-}
-
-/* Overrides for Dark Mode Backgrounds */
-.dark .bg-white,
-.dark .bg-gray-50,
-.dark .bg-gray-100 {
-  background-color: #111827 !important;
-}
-
-.dark .bg-white\/80 {
-  background-color: rgba(17, 24, 39, 0.8) !important;
-}
-
-.dark .bg-white\/90,
-.dark .bg-white\/95 {
-  background-color: rgba(17, 24, 39, 0.95) !important;
-}
-
-.dark .bg-gray-50\/50,
-.dark .bg-gray-50\/60,
-.dark .bg-gray-50\/70,
-.dark .bg-gray-100\/80 {
-  background-color: rgba(31, 41, 55, 0.9) !important;
-}
-
-.dark .bg-emerald-50,
-.dark .bg-emerald-50\/80 {
-  background-color: rgba(6, 78, 59, 0.45) !important;
-}
-
-/* Overrides for Dark Mode Text Colors */
-.dark .text-gray-900,
-.dark .text-gray-800,
-.dark .text-gray-700 {
-  color: #f3f4f6 !important;
-}
-
-.dark .text-gray-600,
-.dark .text-gray-500 {
-  color: #cbd5e1 !important;
-}
-
-.dark .text-gray-400 {
-  color: #94a3b8 !important;
-}
-
-/* Overrides for Dark Mode Borders */
-.dark .border-gray-100,
-.dark .border-gray-200,
-.dark .border-gray-200\/80,
-.dark .border-gray-200\/70,
-.dark .border-gray-300 {
-  border-color: #374151 !important;
-}
-
-.dark .hover\:bg-gray-50:hover,
-.dark .hover\:bg-gray-100\/70:hover {
-  background-color: #1f2937 !important;
-}
-
-/* Forms in Dark Mode */
-.dark input,
-.dark textarea,
-.dark select {
-  background-color: #1f2937 !important;
-  border-color: #4b5563 !important;
-  color: #f3f4f6 !important;
-}
-
-.dark input::placeholder,
-.dark textarea::placeholder {
-  color: #9ca3af;
-}
-
-.dark .divide-gray-800\/50 > :not(:last-child) {
-  border-color: rgba(75, 85, 99, 0.5);
 }
 
 /* Grid Background */
@@ -164,14 +59,6 @@ p, span, h1, h2, h3, h4, h5, h6 {
     background-size: auto, var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
     background-position: center top, 0 0, 0 0;
     background-repeat: no-repeat, repeat, repeat;
-  }
-
-  .dark .bg-grid {
-    background-color: #0b1120;
-    background-image:
-      radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.12), transparent 36rem),
-      linear-gradient(to right, rgba(148, 163, 184, 0.09) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.09) 1px, transparent 1px);
   }
 
   @media (max-width: 640px) {

@@ -48,7 +48,7 @@ const MyProjects = () => {
 
   if (loading) {
     return (
-      <div className="py-20 flex justify-center items-center bg-white dark:bg-gray-950">
+      <div className="py-20 flex justify-center items-center bg-white ">
         <Loader />
       </div>
     );

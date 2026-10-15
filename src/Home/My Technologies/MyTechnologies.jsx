@@ -123,7 +123,7 @@ const MyTechnologies = () => {
                                             {tech.icon}
                                         </div>
 
-                                        <span className="text-gray-700 dark:text-gray-200 text-xs font-semibold group-hover:text-emerald-700 transition-colors truncate">
+                                        <span className="text-gray-700  text-xs font-semibold group-hover:text-emerald-700 transition-colors truncate">
                                             {tech.name}
                                         </span>
                                     </motion.div>

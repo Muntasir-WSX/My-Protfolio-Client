@@ -4,10 +4,10 @@ import { Link } from "react-router";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="group theme-card rounded-2xl overflow-hidden transition-all duration-300 hover:border-emerald-600/50 hover:bg-white dark:hover:bg-gray-800 hover:shadow-xs flex flex-col h-full">
+    <div className="group theme-card rounded-2xl overflow-hidden transition-all duration-300 hover:border-emerald-600/50 hover:bg-white  hover:shadow-xs flex flex-col h-full">
       
       {/* 📸 Image Container */}
-      <div className="relative h-56 overflow-hidden bg-gray-100 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700">
+      <div className="relative h-56 overflow-hidden bg-gray-100  border-b border-gray-100 ">
         <img
           src={project.image}
           alt={project.title}
@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => {
           <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
             {project.title}
           </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-xs leading-relaxed line-clamp-2 font-normal">
+          <p className="text-gray-600  text-xs leading-relaxed line-clamp-2 font-normal">
             {project.description}
           </p>
         </div>
@@ -33,7 +33,7 @@ const ProjectCard = ({ project }) => {
             project.tags.map((tech, index) => (
               <span
                 key={index}
-                className="px-2.5 py-1 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-[10px] text-gray-700 dark:text-gray-200 font-semibold tracking-wider uppercase shadow-2xs"
+                className="px-2.5 py-1 bg-white  border border-gray-200  rounded-lg text-[10px] text-gray-700  font-semibold tracking-wider uppercase shadow-2xs"
               >
                 {tech}
               </span>
@@ -55,7 +55,7 @@ const ProjectCard = ({ project }) => {
               href={project.liveLink}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
+              className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200  bg-white  text-gray-700  hover:bg-emerald-600 hover:text-white hover:border-emerald-600 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
             >
               Live Demo <FiArrowUpRight size={14} />
             </a>
@@ -65,7 +65,7 @@ const ProjectCard = ({ project }) => {
                 href={project.clientCode}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
+                className="flex items-center justify-center gap-1.5 py-2.5 border border-gray-200  bg-white  text-gray-700  hover:bg-gray-900 hover:text-white hover:border-gray-900 rounded-xl text-[11px] uppercase font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
               >
                 Client Repo <FiGithub size={14} />
               </a>

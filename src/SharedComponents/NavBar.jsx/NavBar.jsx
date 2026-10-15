@@ -5,7 +5,6 @@ import { Link as RouterLink } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../Logo/Logo";
 import { AuthContext } from "../../AuthProvider/Authprovier";
-import ThemeToggle from "../ThemeToggle";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +64,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-100 text-gray-900 w-full sticky top-0 z-[100] shadow-xs">
+    <nav className="bg-white border-b border-gray-100 text-gray-900 w-full sticky top-0 z-100 shadow-xs">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-24">
         
         {/* Logo Section */}
@@ -95,7 +94,6 @@ const NavBar = () => {
 
           {/* Action Buttons (Half-rounded / rounded-xl) */}
           <div className="flex items-center gap-2.5 ml-2">
-            <ThemeToggle compact />
             <a
               href={googleDriveResumeUrl}
               target="_blank"
@@ -117,10 +115,9 @@ const NavBar = () => {
 
         {/* Mobile Hamburger */}
         <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle compact />
           <button 
             onClick={() => setIsOpen(true)} 
-            className="flex flex-col gap-1.5 items-end p-2 cursor-pointer relative z-[110]"
+            className="flex flex-col gap-1.5 items-end p-2 cursor-pointer relative z-110"
           >
             <span className="hamburger-bar w-7 h-0.5 bg-gray-900"></span>
             <span className="w-5 h-0.5 bg-emerald-600"></span>
@@ -147,14 +144,14 @@ const NavBar = () => {
               animate={{ x: 0 }} 
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute top-0 left-0 h-full w-72 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-700 flex flex-col z-[130] p-6 shadow-2xl"
+              className="absolute top-0 left-0 h-full w-72 bg-white border-r border-gray-100 flex flex-col z-130 p-6 shadow-2xl"
             >
               {/* Drawer Header */}
               <div className="pb-6 border-b border-gray-100 flex justify-between items-center">
                 <Logo />
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-500 dark:text-gray-300 text-xl font-bold p-2 hover:text-black dark:hover:text-white transition-colors"
+                  className="text-gray-500 text-xl font-bold p-2 hover:text-black transition-colors"
                 >
                   ✕
                 </button>
@@ -183,9 +180,6 @@ const NavBar = () => {
 
               {/* Mobile Action Buttons */}
               <div className="mt-auto pt-6 border-t border-gray-100">
-                <div className="mb-3 flex justify-end">
-                  <ThemeToggle />
-                </div>
                 <div className="flex flex-col gap-2.5">
                   <a
                     href={googleDriveResumeUrl}

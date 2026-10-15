@@ -26,7 +26,7 @@ const Logo = () => {
                     </span>
 
                     {/* Dark/Light Adaptive Name Text */}
-                    <span className="text-slate-900 dark:text-slate-100 ml-1.5 transition-colors duration-300">
+                    <span className="text-slate-900  ml-1.5 transition-colors duration-300">
                         M.
                     </span>
                 </motion.h1>
@@ -49,7 +49,7 @@ const Logo = () => {
                     className="h-[1.5px]"
                     style={{ backgroundColor: '#10b981' }}
                 ></motion.div>
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-slate-600 dark:text-slate-300 group-hover:text-emerald-500 transition-colors duration-300">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-slate-600  group-hover:text-emerald-500 transition-colors duration-300">
                     Web Solutions Expert
                 </span>
             </div>

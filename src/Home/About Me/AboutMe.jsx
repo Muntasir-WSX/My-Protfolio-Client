@@ -41,12 +41,12 @@ const AboutMe = () => {
         {/* Minimal Bio Card */}
         <motion.div
           variants={itemVariants}
-          className="theme-card p-8 md:p-12 rounded-2xl shadow-xs space-y-6 text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed font-normal"
+          className="theme-card p-8 md:p-12 rounded-2xl shadow-xs space-y-6 text-gray-700  text-base md:text-lg leading-relaxed font-normal"
         >
           <p>
             Hello! I am <span className="text-emerald-700 font-bold">Muntasir Mahmud</span>, a 
-            passionate <span className="text-emerald-700 dark:text-emerald-400 font-bold">Full-Stack Developer</span> and a Computer Science & Engineering student at 
-            <span className="text-gray-900 dark:text-gray-100 font-bold"> International Islamic University Chittagong (IIUC)</span>.
+            passionate <span className="text-emerald-700  font-bold">Full-Stack Developer</span> and a Computer Science & Engineering student at 
+            <span className="text-gray-900  font-bold"> International Islamic University Chittagong (IIUC)</span>.
           </p>
 
           <p>

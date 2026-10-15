@@ -67,7 +67,7 @@ const MyExperience = () => {
             <motion.div
               key={exp._id}
               variants={cardVariants}
-              className="theme-card p-8 rounded-2xl relative transition-colors duration-300 hover:border-emerald-600/50 hover:bg-white dark:hover:bg-gray-800"
+              className="theme-card p-8 rounded-2xl relative transition-colors duration-300 hover:border-emerald-600/50 hover:bg-white "
             >
               <div className="relative z-10">
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
@@ -80,7 +80,7 @@ const MyExperience = () => {
                     </p>
                   </div>
                   
-                  <div className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 px-3.5 py-1.5 rounded-full flex items-center gap-2 text-gray-600 dark:text-gray-200 text-xs font-medium">
+                  <div className="bg-white  border border-gray-200  px-3.5 py-1.5 rounded-full flex items-center gap-2 text-gray-600  text-xs font-medium">
                     <FiCalendar className="text-emerald-600" />
                     {exp.duration}
                   </div>
@@ -93,7 +93,7 @@ const MyExperience = () => {
                   </span>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base border-l-2 border-emerald-600/40 pl-4 font-normal">
+                <p className="text-gray-600  leading-relaxed text-sm md:text-base border-l-2 border-emerald-600/40 pl-4 font-normal">
                   {exp.description}
                 </p>
               </div>
