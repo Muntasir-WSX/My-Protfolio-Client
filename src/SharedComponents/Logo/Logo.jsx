@@ -25,7 +25,7 @@ const Logo = () => {
                         transition={{ duration: 0.2 }}
                         className="font-lobster text-3xl md:text-4xl text-emerald-600 hover:text-emerald-700 cursor-pointer tracking-wide transition-colors duration-300 flex items-center"
                     >
-                        Muntasir <span className="text-black ml-1.5">M.</span>
+                        Muntasir <span className="text-gray-900 dark:text-gray-100 ml-1.5">M.</span>
                     </motion.h1>
 
                     {/* Green Accent Dot */}
@@ -44,7 +44,7 @@ const Logo = () => {
                         transition={{ duration: 0.8 }}
                         className="h-[1.5px] bg-emerald-600"
                     ></motion.div>
-                    <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-gray-600 group-hover:text-emerald-600 transition-colors duration-300">
+                    <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-gray-600 dark:text-gray-400 group-hover:text-emerald-600 transition-colors duration-300">
                         Web Solutions Expert
                     </span>
                 </div>

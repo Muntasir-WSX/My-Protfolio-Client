@@ -26,7 +26,7 @@ export default function ProjectsDetails() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-950">
         <Loader />
       </div>
     );
@@ -34,7 +34,7 @@ export default function ProjectsDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-white text-gray-900 p-6">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 p-6">
         <h2 className="text-2xl font-bold mb-4">Project Not Found!</h2>
         <Link to="/" className="px-6 py-2.5 bg-emerald-600 text-white rounded-xl font-bold text-xs uppercase">
           Back To Home
@@ -47,14 +47,14 @@ export default function ProjectsDetails() {
   const activeLiveLink = project.liveLink || project.livelink;
 
   return (
-    <section className="bg-white text-gray-900 min-h-screen py-12 md:py-20 px-6 md:px-16">
+    <section className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen py-12 md:py-20 px-6 md:px-16">
       <div className="max-w-5xl mx-auto space-y-10">
         
         {/* Back Button */}
         <div>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-xs font-bold uppercase transition-all shadow-2xs"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-xl text-xs font-bold uppercase transition-all shadow-2xs"
           >
             <FiArrowLeft size={16} /> Back To Projects
           </Link>
@@ -71,7 +71,7 @@ export default function ProjectsDetails() {
         </div>
 
         {/* Main Banner Image */}
-        <div className="relative rounded-2xl overflow-hidden border border-gray-200/80 bg-gray-50 shadow-sm max-h-[480px]">
+        <div className="relative rounded-2xl overflow-hidden border border-gray-200/80 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-sm max-h-[480px]">
           <img
             src={project.image}
             alt={project.title}
@@ -110,31 +110,31 @@ export default function ProjectsDetails() {
           <div className="md:col-span-8 space-y-8">
             
             {/* Description */}
-            <div className="bg-gray-50/70 border border-gray-200/80 rounded-2xl p-6 md:p-8 space-y-3">
+            <div className="bg-gray-50/70 dark:bg-gray-800/70 border border-gray-200/80 dark:border-gray-700 rounded-2xl p-6 md:p-8 space-y-3">
               <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
                 <FiCheckCircle className="text-emerald-600" /> Brief Description
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed font-normal whitespace-pre-line">
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed font-normal whitespace-pre-line">
                 {project.description}
               </p>
             </div>
 
             {/* Challenges Faced */}
-            <div className="bg-gray-50/70 border border-gray-200/80 rounded-2xl p-6 md:p-8 space-y-3">
+            <div className="bg-gray-50/70 dark:bg-gray-800/70 border border-gray-200/80 dark:border-gray-700 rounded-2xl p-6 md:p-8 space-y-3">
               <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
                 <FiAlertTriangle className="text-amber-500" /> Challenges Faced
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed font-normal whitespace-pre-line">
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed font-normal whitespace-pre-line">
                 {project.challenges || "Managing multi-tier roles (User, Agent, Admin), Stripe payment gateway integration, and ensuring real-time claim status updates."}
               </p>
             </div>
 
             {/* Potential Improvements & Future Plans */}
-            <div className="bg-gray-50/70 border border-gray-200/80 rounded-2xl p-6 md:p-8 space-y-3">
+            <div className="bg-gray-50/70 dark:bg-gray-800/70 border border-gray-200/80 dark:border-gray-700 rounded-2xl p-6 md:p-8 space-y-3">
               <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
                 <FiTrendingUp className="text-blue-600" /> Future Plans & Improvements
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed font-normal whitespace-pre-line">
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed font-normal whitespace-pre-line">
                 {project.futurePlans || "Integrating AI-based policy recommendation engine, adding automated email notifications, and mobile app support."}
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function ProjectsDetails() {
 
           {/* Tech Stack Side Panel */}
           <div className="md:col-span-4">
-            <div className="bg-gray-50/70 border border-gray-200/80 rounded-2xl p-6 space-y-4 sticky top-28">
+            <div className="bg-gray-50/70 dark:bg-gray-800/70 border border-gray-200/80 dark:border-gray-700 rounded-2xl p-6 space-y-4 sticky top-28">
               <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider">
                 Technology Stack
               </h3>
@@ -150,7 +150,7 @@ export default function ProjectsDetails() {
                 {project.tags && project.tags.map((tech, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1.5 bg-white border border-gray-200 rounded-xl text-xs text-gray-800 font-semibold uppercase tracking-wider shadow-2xs"
+                    className="px-3 py-1.5 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl text-xs text-gray-800 dark:text-gray-100 font-semibold uppercase tracking-wider shadow-2xs"
                   >
                     {tech}
                   </span>

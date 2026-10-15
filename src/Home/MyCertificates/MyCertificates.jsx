@@ -83,16 +83,16 @@ const MyCertificates = () => {
                                 className="relative pl-6 md:pl-10 group"
                             >
                                 {/* Dot Indicator */}
-                                <div className="absolute -left-[9px] top-6 md:top-4 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
+                                <div className="theme-timeline-dot absolute -left-[9px] top-6 md:top-4 w-4 h-4 rounded-full border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
 
-                                <div className="bg-gray-50/60 border border-gray-200/80 p-5 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white transition-all duration-300">
+                                <div className="theme-card p-5 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300">
                                     <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6">
                                         
                                         {/* Info Side */}
                                         <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col justify-between">
                                             <div className="space-y-3">
                                                 <div className="flex items-start gap-3">
-                                                    <div className="p-2.5 bg-emerald-50 rounded-xl text-emerald-600 shrink-0 mt-0.5">
+                                                    <div className="p-2.5 bg-emerald-50 dark:bg-emerald-950/60 rounded-xl text-emerald-600 shrink-0 mt-0.5">
                                                         <FiAward size={20} />
                                                     </div>
                                                     <h3 className="text-lg md:text-xl font-bold text-gray-900 leading-snug">
@@ -103,7 +103,7 @@ const MyCertificates = () => {
                                                 <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm">
                                                     <span className="text-emerald-700 font-semibold">{cert.organizer}</span>
                                                     <span className="hidden md:block text-gray-300">•</span>
-                                                    <div className="flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 text-xs font-medium">
+                                                    <div className="flex items-center gap-1.5 px-3 py-1 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full text-gray-600 dark:text-gray-200 text-xs font-medium">
                                                         <FiCalendar className="text-emerald-600" /> {cert.date}
                                                     </div>
                                                 </div>
@@ -117,7 +117,7 @@ const MyCertificates = () => {
                                         {/* Image Preview Side */}
                                         <div 
                                             onClick={() => setSelectedImage(cert.imageUrl)}
-                                            className="lg:col-span-1 order-1 lg:order-2 relative group/img overflow-hidden rounded-xl border border-gray-200 h-40 md:h-full cursor-pointer bg-gray-100"
+                                            className="lg:col-span-1 order-1 lg:order-2 relative group/img overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 h-40 md:h-full cursor-pointer bg-gray-100 dark:bg-gray-900"
                                         >
                                             <img 
                                                 src={cert.imageUrl} 
@@ -127,7 +127,7 @@ const MyCertificates = () => {
                                             
                                             {/* Hover Overlay */}
                                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                                <div className="flex items-center gap-2 bg-white/90 text-gray-900 text-xs font-bold px-3.5 py-2 rounded-full shadow-md backdrop-blur-xs">
+                                                <div className="flex items-center gap-2 bg-white/90 dark:bg-gray-800/90 text-gray-900 dark:text-gray-100 text-xs font-bold px-3.5 py-2 rounded-full shadow-md backdrop-blur-xs">
                                                     <FiSearch size={14} /> View Certificate
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@ const MyCertificates = () => {
                             initial={{ scale: 0.9, opacity: 0 }} 
                             animate={{ scale: 1, opacity: 1 }} 
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="relative max-w-4xl w-full bg-white rounded-2xl p-2 shadow-2xl overflow-hidden"
+                            className="relative max-w-4xl w-full bg-white dark:bg-gray-900 rounded-2xl p-2 shadow-2xl overflow-hidden"
                             onClick={(e) => e.stopPropagation()} 
                         >
                             <button 

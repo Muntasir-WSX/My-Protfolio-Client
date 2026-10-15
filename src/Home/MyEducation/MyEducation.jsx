@@ -64,13 +64,13 @@ const MyEducation = () => {
                             className="relative pl-6 md:pl-10 group"
                         >
                             {/* Minimal Timeline Bullet */}
-                            <div className="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
+                            <div className="theme-timeline-dot absolute -left-[9px] top-3 w-4 h-4 rounded-full border-2 border-emerald-600 group-hover:bg-emerald-600 transition-colors duration-300"></div>
 
                             {/* Minimal Education Card */}
-                            <div className="bg-gray-50/60 border border-gray-200/80 p-6 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white transition-all duration-300 shadow-xs">
+                            <div className="theme-card p-6 md:p-8 rounded-2xl hover:border-emerald-600/50 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-xs">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
                                     <div className="flex items-center gap-3">
-                                        <div className="p-2.5 bg-emerald-50 rounded-xl text-emerald-600">
+                                        <div className="p-2.5 bg-emerald-50 dark:bg-emerald-950/60 rounded-xl text-emerald-600">
                                             <FiBookOpen size={20} />
                                         </div>
                                         <div>
@@ -79,7 +79,7 @@ const MyEducation = () => {
                                         </div>
                                     </div>
                                     
-                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 text-xs font-medium w-fit">
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full text-gray-600 dark:text-gray-200 text-xs font-medium w-fit">
                                         <FiCalendar className="text-emerald-600" />
                                         {item.year}
                                     </div>
@@ -90,9 +90,9 @@ const MyEducation = () => {
                                 </p>
 
                                 {item.cgpa && (
-                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50/80 border border-emerald-200/60 rounded-lg">
+                                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50/80 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800 rounded-lg">
                                         <FiStar className="text-emerald-600 fill-emerald-600 text-xs" />
-                                        <span className="text-gray-800 font-bold text-xs">CGPA / Result: {item.cgpa}</span>
+                                        <span className="text-gray-800 dark:text-gray-200 font-bold text-xs">CGPA / Result: {item.cgpa}</span>
                                     </div>
                                 )}
                             </div>

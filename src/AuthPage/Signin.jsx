@@ -9,6 +9,7 @@ import { AuthContext } from '../AuthProvider/Authprovier';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../Hooks/useAxiosSeceure';
+import ThemeToggle from '../SharedComponents/ThemeToggle';
 
 const Signin = () => {
     const { googleLogin, logOut } = useContext(AuthContext);
@@ -104,6 +105,9 @@ const Signin = () => {
                     </div>
                 </Link>
             </motion.div>
+            <div className="absolute top-6 right-6 z-50">
+                <ThemeToggle compact />
+            </div>
 
             <div className="max-w-4xl w-full grid md:grid-cols-2 bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-200/80 relative">
                 

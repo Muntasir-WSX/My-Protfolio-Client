@@ -101,7 +101,7 @@ const MyTechnologies = () => {
                 {/* 3 Column Grid Container */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     {skillCategories.map((category) => (
-                        <div key={category.title} className="bg-gray-50/50 border border-gray-200/80 p-6 rounded-2xl space-y-6">
+                        <div key={category.title} className="theme-card p-6 rounded-2xl space-y-6">
                             <h3 className="text-lg font-bold text-gray-900 border-l-4 border-emerald-600 pl-3">
                                 {category.title}
                             </h3>
@@ -117,13 +117,13 @@ const MyTechnologies = () => {
                                     <motion.div
                                         key={tech.name}
                                         variants={itemVariants}
-                                        className="group bg-white border border-gray-200/70 p-3.5 rounded-xl flex items-center gap-3 hover:border-emerald-600/50 hover:shadow-xs transition-all duration-300"
+                                        className="group theme-card p-3.5 rounded-xl flex items-center gap-3 hover:border-emerald-600/50 hover:shadow-xs transition-all duration-300"
                                     >
                                         <div className="text-2xl shrink-0 transition-transform duration-300 group-hover:scale-110">
                                             {tech.icon}
                                         </div>
 
-                                        <span className="text-gray-700 text-xs font-semibold group-hover:text-emerald-700 transition-colors truncate">
+                                        <span className="text-gray-700 dark:text-gray-200 text-xs font-semibold group-hover:text-emerald-700 transition-colors truncate">
                                             {tech.name}
                                         </span>
                                     </motion.div>

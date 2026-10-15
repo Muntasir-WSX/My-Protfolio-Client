@@ -48,7 +48,7 @@ const MyProjects = () => {
 
   if (loading) {
     return (
-      <div className="py-20 flex justify-center items-center bg-white">
+      <div className="py-20 flex justify-center items-center bg-white dark:bg-gray-950">
         <Loader />
       </div>
     );
@@ -94,7 +94,7 @@ const MyProjects = () => {
           </motion.div>
         ) : (
           /* Empty State */
-          <div className="text-center py-20 border border-dashed border-gray-200 rounded-2xl bg-gray-50/50">
+          <div className="theme-card text-center py-20 border-dashed rounded-2xl">
             <p className="text-gray-500 font-medium tracking-wide text-sm">
               No projects uploaded yet!
             </p>
