@@ -15,7 +15,7 @@ const NavBar = () => {
   const isAdmin = user && user.email === "alimuntasir2001@gmail.com";
   const isHomePage = location.pathname === "/";
 
-  const googleDriveResumeUrl = "https://drive.google.com/file/d/1Y829OxYy0flZtnRjDRiqvCwnoMKA7S98/view?usp=sharing";
+  const googleDriveResumeUrl = "https://drive.google.com/file/d/169UktYWDWRFFQW1HJ-UwQMfKrJv_O-Y1/view?usp=sharing";
 
   const links = [
     { name: "Home", to: "home" },
