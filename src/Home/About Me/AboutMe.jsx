@@ -31,7 +31,7 @@ const AboutMe = () => {
         {/* Header Section */}
         <motion.div variants={itemVariants} className="mb-10 text-center lg:text-left">
           <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">
-            Get To Know Me
+            Get To Know 
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mt-1">
             About Me
