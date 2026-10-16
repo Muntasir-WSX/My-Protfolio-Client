@@ -64,8 +64,11 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-100 text-gray-900 w-full sticky top-0 z-100 shadow-xs">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-24">
+    <nav className="relative bg-white border-b border-gray-200 text-gray-900 w-full sticky top-0 z-50 shadow-sm">
+      {/* Soft Ambient Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-emerald-500/10 blur-2xl pointer-events-none rounded-full" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center h-24 relative z-10">
         
         {/* Logo Section */}
         <div className="shrink-0 cursor-pointer flex items-center" onClick={() => navigate("/")}>
@@ -92,7 +95,7 @@ const NavBar = () => {
             )}
           </ul>
 
-          {/* Action Buttons (Half-rounded / rounded-xl) */}
+          {/* Action Buttons */}
           <div className="flex items-center gap-2.5 ml-2">
             <a
               href={googleDriveResumeUrl}
