@@ -167,7 +167,7 @@ const Banner = () => {
 
             <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-100">
               <img
-                src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791952721/Gemini_Generated_Image_oy4kzwoy4kzwoy4k_ufb4mz.jpg"
+                src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1794297764/Muntasir_s_Branding_xcvr55.png"
                 alt="Muntasir Mahmud"
                 className="w-full h-full object-cover object-[center_20%]"
               />
